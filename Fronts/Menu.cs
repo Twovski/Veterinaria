@@ -13,8 +13,8 @@ namespace Fronts {
     public partial class Menu : Form {
         private NegocioMenu _negocio = new NegocioMenu();
         public Menu() {
-            InitializeComponent();
             _negocio.StartConexion();
+            InitializeComponent();
         }
         
         private void Boton_Cliente_Click(object sender, EventArgs e) {

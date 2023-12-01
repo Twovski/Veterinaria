@@ -11,10 +11,38 @@ namespace Datos {
             SqlCommand command = new SqlCommand(query, SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
             table.Load(reader);
-            
+            table.Columns["VetID"].ColumnMapping = MappingType.Hidden;
             return table;
         }
 
-        
+        public List<EntidadVeterinaria> ListaVeterinaria() {
+            List<EntidadVeterinaria> list = new List<EntidadVeterinaria>();
+            SqlCommand command = new SqlCommand("SELECT * FROM Veterinaria", SQL.Connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            list.Add(new EntidadVeterinaria() {
+                VetID = 0,
+                Nombre = null,
+                Status = false,
+                Direccion = null,
+                RFC = null
+            });
+            while (reader.Read()) {
+                list.Add(new EntidadVeterinaria() {
+                    VetID = reader.GetInt32(0),
+                    Nombre = reader.GetString(1),
+                    Direccion = reader.GetString(2),
+                    Status = reader.GetBoolean(3),
+                    RFC = reader.GetString(4)
+                });
+            }
+            
+            return list;
+        }
+
+        public int Execute(string query) {
+            SqlCommand command = new SqlCommand(query, SQL.Connection);
+            return command.ExecuteNonQuery();
+        }
     }
 }

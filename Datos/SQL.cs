@@ -7,7 +7,7 @@ namespace Datos {
         public static readonly SqlConnection Connection = new SqlConnection();
         
         private string _server ="localhost";
-        private string _DB="veterinaria";
+        private string _DB="VetReza";
         private string _user="sa";
         private string _password ="SQL_2021";
         private string _port ="1433";
@@ -19,7 +19,7 @@ namespace Datos {
                                               "user id=" + _user + ";" + 
                                               "password=" + _password + ";" + 
                                               "Initial Catalog=" + _DB + ";" + 
-                                              "Persist Security Info=true";
+                                              "Persist Security Info=true; MultipleActiveResultSets=true";
                 Connection.Open();
             }
             catch (SqlException e) {

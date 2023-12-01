@@ -41,10 +41,9 @@ namespace Fronts {
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.TextTelefono = new System.Windows.Forms.MaskedTextBox();
             this.BotonCliente = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Titulo = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TextCliID = new System.Windows.Forms.TextBox();
             this.BoxVetID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TextNombre = new System.Windows.Forms.TextBox();
@@ -61,12 +60,14 @@ namespace Fronts {
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TextCelular = new System.Windows.Forms.MaskedTextBox();
+            this.TextCliID = new System.Windows.Forms.NumericUpDown();
             this.TablaCliente = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TextCliID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,6 +157,7 @@ namespace Fronts {
             this.OpcionG.Size = new System.Drawing.Size(82, 38);
             this.OpcionG.TabIndex = 1;
             this.OpcionG.UseVisualStyleBackColor = true;
+            this.OpcionG.CheckedChanged += new System.EventHandler(this.OpcionG_CheckedChanged);
             // 
             // OpcionB
             // 
@@ -173,6 +175,7 @@ namespace Fronts {
             this.OpcionB.Size = new System.Drawing.Size(85, 38);
             this.OpcionB.TabIndex = 3;
             this.OpcionB.UseVisualStyleBackColor = true;
+            this.OpcionB.CheckedChanged += new System.EventHandler(this.OpcionB_CheckedChanged);
             // 
             // OpcionE
             // 
@@ -190,6 +193,7 @@ namespace Fronts {
             this.OpcionE.Size = new System.Drawing.Size(85, 39);
             this.OpcionE.TabIndex = 2;
             this.OpcionE.UseVisualStyleBackColor = true;
+            this.OpcionE.CheckedChanged += new System.EventHandler(this.OpcionE_CheckedChanged);
             // 
             // OpcionC
             // 
@@ -209,6 +213,7 @@ namespace Fronts {
             this.OpcionC.TabIndex = 4;
             this.OpcionC.TabStop = true;
             this.OpcionC.UseVisualStyleBackColor = true;
+            this.OpcionC.CheckedChanged += new System.EventHandler(this.OpcionC_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -233,10 +238,9 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.Controls.Add(this.TextTelefono, 2, 11);
             this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 12);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label9, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.TextCliID, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.BoxVetID, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextNombre, 0, 5);
@@ -253,6 +257,7 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.label11, 2, 8);
             this.tableLayoutPanel3.Controls.Add(this.label7, 2, 10);
             this.tableLayoutPanel3.Controls.Add(this.TextCelular, 0, 11);
+            this.tableLayoutPanel3.Controls.Add(this.TextCliID, 0, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 98);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 14;
@@ -280,7 +285,7 @@ namespace Fronts {
             this.tableLayoutPanel3.SetColumnSpan(this.TextTelefono, 2);
             this.TextTelefono.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextTelefono.Location = new System.Drawing.Point(223, 289);
-            this.TextTelefono.Mask = "000-0000";
+            this.TextTelefono.Mask = "0000000";
             this.TextTelefono.Name = "TextTelefono";
             this.TextTelefono.PromptChar = ' ';
             this.TextTelefono.Size = new System.Drawing.Size(217, 21);
@@ -301,18 +306,18 @@ namespace Fronts {
             this.BotonCliente.UseVisualStyleBackColor = true;
             this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
             // 
-            // label1
+            // Titulo
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label1, 4);
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.tableLayoutPanel3.SetRowSpan(this.label1, 2);
-            this.label1.Size = new System.Drawing.Size(437, 52);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Consultar Cliente";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Titulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.Titulo, 4);
+            this.Titulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titulo.Location = new System.Drawing.Point(3, 0);
+            this.Titulo.Name = "Titulo";
+            this.tableLayoutPanel3.SetRowSpan(this.Titulo, 2);
+            this.Titulo.Size = new System.Drawing.Size(437, 52);
+            this.Titulo.TabIndex = 1;
+            this.Titulo.Text = "Consultar Cliente";
+            this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -323,7 +328,7 @@ namespace Fronts {
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(217, 26);
             this.label9.TabIndex = 21;
-            this.label9.Text = "Veterinaria";
+            this.label9.Text = "Veterinaria *";
             this.label9.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label2
@@ -335,23 +340,14 @@ namespace Fronts {
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(214, 26);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Cliente ID";
+            this.label2.Text = "Cliente ID *";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // TextCliID
-            // 
-            this.TextCliID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextCliID, 2);
-            this.TextCliID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCliID.Location = new System.Drawing.Point(3, 81);
-            this.TextCliID.Name = "TextCliID";
-            this.TextCliID.Size = new System.Drawing.Size(214, 21);
-            this.TextCliID.TabIndex = 3;
             // 
             // BoxVetID
             // 
             this.BoxVetID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.SetColumnSpan(this.BoxVetID, 2);
+            this.BoxVetID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BoxVetID.FormattingEnabled = true;
             this.BoxVetID.Location = new System.Drawing.Point(223, 81);
             this.BoxVetID.Name = "BoxVetID";
@@ -367,7 +363,7 @@ namespace Fronts {
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(214, 26);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Nombre";
+            this.label3.Text = "Nombre *";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextNombre
@@ -389,7 +385,7 @@ namespace Fronts {
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(217, 26);
             this.label10.TabIndex = 23;
-            this.label10.Text = "IFE";
+            this.label10.Text = "IFE *";
             this.label10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextIFE
@@ -411,7 +407,7 @@ namespace Fronts {
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(214, 26);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Apellido Paterno";
+            this.label4.Text = "Apellido Paterno *";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label5
@@ -423,7 +419,7 @@ namespace Fronts {
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 26);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Apellido Materno";
+            this.label5.Text = "Apellido Materno *";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextAM
@@ -455,7 +451,7 @@ namespace Fronts {
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(214, 26);
             this.label8.TabIndex = 29;
-            this.label8.Text = "Direccion";
+            this.label8.Text = "Direccion *";
             this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextDireccion
@@ -521,11 +517,22 @@ namespace Fronts {
             this.tableLayoutPanel3.SetColumnSpan(this.TextCelular, 2);
             this.TextCelular.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCelular.Location = new System.Drawing.Point(3, 289);
-            this.TextCelular.Mask = "000-000-0000";
+            this.TextCelular.Mask = "0000000000";
             this.TextCelular.Name = "TextCelular";
             this.TextCelular.PromptChar = ' ';
             this.TextCelular.Size = new System.Drawing.Size(214, 21);
             this.TextCelular.TabIndex = 38;
+            // 
+            // TextCliID
+            // 
+            this.TextCliID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.TextCliID, 2);
+            this.TextCliID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextCliID.Location = new System.Drawing.Point(3, 81);
+            this.TextCliID.Name = "TextCliID";
+            this.TextCliID.Size = new System.Drawing.Size(214, 21);
+            this.TextCliID.TabIndex = 40;
+            this.TextCliID.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // TablaCliente
             // 
@@ -545,6 +552,7 @@ namespace Fronts {
             this.TablaCliente.ReadOnly = true;
             this.TablaCliente.Size = new System.Drawing.Size(449, 475);
             this.TablaCliente.TabIndex = 0;
+            this.TablaCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaCliente_CellClick);
             // 
             // Cliente
             // 
@@ -564,9 +572,12 @@ namespace Fronts {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TextCliID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaCliente)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.NumericUpDown TextCliID;
 
         private System.Windows.Forms.MaskedTextBox TextTelefono;
 
@@ -602,11 +613,9 @@ namespace Fronts {
 
         private System.Windows.Forms.Label label9;
 
-        private System.Windows.Forms.TextBox TextCliID;
-
         private System.Windows.Forms.Label label2;
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Titulo;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 

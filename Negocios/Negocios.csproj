@@ -39,7 +39,6 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Class1.cs"/>
         <Compile Include="NegocioCliente.cs" />
         <Compile Include="NegocioMenu.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
