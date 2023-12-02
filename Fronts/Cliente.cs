@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
-using Entidades;
 using Negocio;
 
 namespace Fronts {
@@ -20,7 +17,6 @@ namespace Fronts {
             TextCliID.Text = "";
         }
 
-
         private void BotonCliente_Click(object sender, EventArgs e) {
             if (OpcionC.Checked) {
                 string query = QueryConsulta();
@@ -32,9 +28,10 @@ namespace Fronts {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
+                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                 }
                 catch (Exception exception) {
-                    MessageBox.Show("Porfavor rellenar los campos necesarios (*)");
+                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                 }
             }
             
@@ -43,9 +40,10 @@ namespace Fronts {
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
+                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                 }
                 catch (Exception exception) {
-                    MessageBox.Show("Porfavor selecciona algun registro de la tabla dando click");
+                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                 }
             }
             
@@ -54,207 +52,145 @@ namespace Fronts {
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
+                    LabelCheck(new []{ "CliID" });
                 }
                 catch (Exception exception) {
-                    MessageBox.Show("Porfavor selecciona algun registro de la tabla dando click");
+                    LabelCheck(new []{ "CliID" });
                 }
             }
-                
+            
+            
         }
 
-        private string IsNull(string text) {
-            return string.IsNullOrWhiteSpace(text) ? "null" : "'" + text + "'";
+        private void LabelCheck(string[] columns) {
+            foreach (string column in columns) {
+                string text = GetColumn(column);
+                if (string.IsNullOrWhiteSpace(text)) 
+                    GetLabel(column).ForeColor = Color.Red;
+                else 
+                    GetLabel(column).ForeColor = Color.Black;
+            }
         }
 
         private string QueryBaja() {
-            string query = "UPDATE Cliente SET ";
-            query += " Status = 0";
-            query += " WHERE CliID = " + TextCliID.Text;
-            return query;
+            return "UPDATE Cliente SET Status = 0 WHERE CliID = " + TextCliID.Text;
         }
         
         private string QueryEditar() {
+            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "Correo", "Celular", "Telefono", "VetID" };
             string query = "UPDATE Cliente ";
             string condition = "SET ";
-            
-            if (BoxVetID.SelectedIndex != 0) {
-                EntidadVeterinaria item = (EntidadVeterinaria) BoxVetID.SelectedItem;
-                query +=  condition + " VetID = " + item.VetID;
-                condition = ",";
-            }
 
-            if (!string.IsNullOrWhiteSpace(TextNombre.Text)) {
-                query += condition + " Nombre = '" + TextNombre.Text + "'";
-                condition = ",";
-            }
-
-            if (!string.IsNullOrWhiteSpace(TextIFE.Text)) {
-                query += condition + " IFE = '" + TextIFE.Text + "'";
-                condition = ",";
-            }
-
-            if (!string.IsNullOrWhiteSpace(TextAP.Text)) {
-                query +=  condition + " \"Apellido Paterno\" = '" + TextAP.Text + "'";
-                condition = ",";
-            }
-
-            if (!string.IsNullOrWhiteSpace(TextAM.Text)) {
-                query +=  condition + " \"Apellido Materno\" = '" + TextAM.Text + "'";
-                condition = ",";
-            }
-
-
-            if (!string.IsNullOrWhiteSpace(TextDireccion.Text)) {
-                query += condition + " Direccion = '" + TextDireccion.Text + "'";
-                condition = ",";
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                query += $"{condition} [{column}] = {IsNull(result)}";
+                condition = ", ";
             }
             
-            if (!string.IsNullOrWhiteSpace(TextCorreo.Text)) {
-                query += condition + " Correo = '" + TextCorreo.Text + "'";
-                condition = ",";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextCelular.Text)) {
-                query += condition + " Celular = '" + TextCelular.Text + "'";
-                condition = ",";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextDireccion.Text)) {
-                query += condition + " Telefono = '" + TextDireccion.Text + "'";
-            }
-
             query += " WHERE CliID = " + TextCliID.Text;
             
+            Console.WriteLine(query);
             return query;
         }
         
         private string QueryGuardar() {
-            EntidadVeterinaria veterinario = (EntidadVeterinaria) BoxVetID.SelectedItem;
-            string query = "INSERT INTO Cliente VALUES (";
-            query += IsNull(TextNombre.Text) + ", ";
-            query += IsNull(TextAP.Text) + ", ";
-            query += IsNull(TextAM.Text) + ", ";
-            query += IsNull(TextDireccion.Text) + ", ";
-            query += IsNull(TextIFE.Text) + ", ";
-            query += "1, ";
-            query += IsNull(TextCorreo.Text) + ", ";
-            query += IsNull(TextTelefono.Text) + ", ";
-            query += IsNull(TextCelular.Text) + ", ";
-            query += veterinario.VetID + ")";
+            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "Correo", "Celular", "Telefono", "VetID" };
+            string query = "INSERT INTO Cliente(";
+            query += "[" + string.Join("], [", columns) + "]";
+            query += ") VALUES (";
+            
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                query += $"{IsNull(result)}, ";
+            }
+            
+            query = query.TrimEnd(' ', ',') + ")";
             return query;
         }
 
         private string QueryConsulta() {
+            string[] columns = { "CliID", "VetID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "Correo", "Celular", "Telefono" };
             string query = "SELECT * FROM VW_Cliente";
             string condition = " WHERE";
 
-            if (!string.IsNullOrWhiteSpace(TextCliID.Text)) {
-                query += condition + " CliID = " + TextCliID.Text;
-                condition = " AND";
-            }
-            
-            if (BoxVetID.SelectedIndex != 0) {
-                EntidadVeterinaria item = (EntidadVeterinaria) BoxVetID.SelectedItem;
-                query += condition + " VetID = " + item.VetID;
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextNombre.Text)) {
-                query += condition + " Nombre = '" + TextNombre.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextIFE.Text)) {
-                query += condition + " IFE = '" + TextIFE.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextAP.Text)) {
-                query += condition + " \"Apellido Paterno\" = '" + TextAP.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextAM.Text)) {
-                query += condition + " \"Apellido Materno\" = '" + TextAM.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextDireccion.Text)) {
-                query += condition + " Direccion = '" + TextDireccion.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextCorreo.Text)) {
-                query += condition + " Correo = '" + TextCorreo.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextCelular.Text)) {
-                query += condition + " Celular = '" + TextCelular.Text + "'";
-                condition = " AND";
-            }
-            
-            if (!string.IsNullOrWhiteSpace(TextDireccion.Text)) {
-                query += condition + " Telefono = '" + TextDireccion.Text + "'";
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += condition + $" [{column}] = '{result}'";
+                    condition = " AND";
+                }
             }
             
             return query;
         }
+        
+        private string IsNull(string text) {
+            return string.IsNullOrWhiteSpace(text) ? "null" : "'" + text + "'";
+        }
+        
+        private string GetColumn(string column) {
+            switch (column) {
+                case "CliID":
+                    return TextCliID.Text;
+                case "VetID":
+                    int id = (int) BoxVetID.SelectedValue;
+                    return id == -1 ? "" : Convert.ToString(BoxVetID.SelectedValue);
+                case "Nombre":
+                    return TextNombre.Text;
+                case "IFE":
+                    return TextIFE.Text;
+                case "Apellido Paterno":
+                    return TextAP.Text;
+                case "Apellido Materno":
+                    return TextAM.Text;
+                case "Direccion":
+                    return TextDireccion.Text;
+                case "Correo":
+                    return TextCorreo.Text;
+                case "Celular":
+                    return TextCelular.Text;
+                case "Telefono":
+                    return TextTelefono.Text;
+                default:
+                    return "";
+            }
+        }
 
+        private Label GetLabel(string column) {
+            switch (column) {
+                case "CliID":
+                    return LabelCliID;
+                case "VetID":
+                    return LabelVetID;
+                case "Nombre":
+                    return LabelNombre;
+                case "IFE":
+                    return LabelIFE;
+                case "Apellido Paterno":
+                    return LabelAP;
+                case "Apellido Materno":
+                    return LabelAM;
+                case "Direccion":
+                    return LabelDireccion;
+                default:
+                    return null;
+            }
+        }
+        
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Consultar Clientes";
-            TextCliID.Enabled = true;
-            TextNombre.Enabled = true;
-            TextAP.Enabled = true;
-            TextAM.Enabled = true;
-            TextDireccion.Enabled = true;
-            TextCorreo.Enabled = true;
-            TextIFE.Enabled = true;
-            TextCelular.Enabled = true;
-            TextTelefono.Enabled = true;
-            BoxVetID.Enabled = true;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Clientes";
-            TextCliID.Enabled = false;
-            TextNombre.Enabled = true;
-            TextAP.Enabled = true;
-            TextAM.Enabled = true;
-            TextDireccion.Enabled = true;
-            TextCorreo.Enabled = true;
-            TextIFE.Enabled = true;
-            TextCelular.Enabled = true;
-            TextTelefono.Enabled = true;
-            BoxVetID.Enabled = true;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Clientes";
-            TextCliID.Enabled = false;
-            TextNombre.Enabled = false;
-            TextAP.Enabled = false;
-            TextAM.Enabled = false;
-            TextDireccion.Enabled = false;
-            TextCorreo.Enabled = false;
-            TextIFE.Enabled = false;
-            TextCelular.Enabled = false;
-            TextTelefono.Enabled = false;
-            BoxVetID.Enabled = false;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Clientes";
-            TextCliID.Enabled = false;
-            TextNombre.Enabled = true;
-            TextAP.Enabled = true;
-            TextAM.Enabled = true;
-            TextDireccion.Enabled = true;
-            TextCorreo.Enabled = true;
-            TextIFE.Enabled = true;
-            TextCelular.Enabled = true;
-            TextTelefono.Enabled = true;
-            BoxVetID.Enabled = true;
         }
 
         private void TablaCliente_CellClick(object sender, DataGridViewCellEventArgs e) {

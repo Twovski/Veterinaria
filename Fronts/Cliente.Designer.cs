@@ -42,18 +42,18 @@ namespace Fronts {
             this.TextTelefono = new System.Windows.Forms.MaskedTextBox();
             this.BotonCliente = new System.Windows.Forms.Button();
             this.Titulo = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LabelVetID = new System.Windows.Forms.Label();
+            this.LabelCliID = new System.Windows.Forms.Label();
             this.BoxVetID = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LabelNombre = new System.Windows.Forms.Label();
             this.TextNombre = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.LabelIFE = new System.Windows.Forms.Label();
             this.TextIFE = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LabelAP = new System.Windows.Forms.Label();
+            this.LabelAM = new System.Windows.Forms.Label();
             this.TextAM = new System.Windows.Forms.TextBox();
             this.TextAP = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LabelDireccion = new System.Windows.Forms.Label();
             this.TextDireccion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TextCorreo = new System.Windows.Forms.TextBox();
@@ -239,18 +239,18 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.TextTelefono, 2, 11);
             this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 12);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label9, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.LabelVetID, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.LabelCliID, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.BoxVetID, 2, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 4);
+            this.tableLayoutPanel3.Controls.Add(this.LabelNombre, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextNombre, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label10, 2, 4);
+            this.tableLayoutPanel3.Controls.Add(this.LabelIFE, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextIFE, 2, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 2, 6);
+            this.tableLayoutPanel3.Controls.Add(this.LabelAP, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.LabelAM, 2, 6);
             this.tableLayoutPanel3.Controls.Add(this.TextAM, 2, 7);
             this.tableLayoutPanel3.Controls.Add(this.TextAP, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 8);
+            this.tableLayoutPanel3.Controls.Add(this.LabelDireccion, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.TextDireccion, 0, 9);
             this.tableLayoutPanel3.Controls.Add(this.label6, 0, 10);
             this.tableLayoutPanel3.Controls.Add(this.TextCorreo, 2, 9);
@@ -319,52 +319,53 @@ namespace Fronts {
             this.Titulo.Text = "Consultar Cliente";
             this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // LabelVetID
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label9, 2);
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(223, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(217, 26);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Veterinaria *";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelVetID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelVetID, 2);
+            this.LabelVetID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelVetID.Location = new System.Drawing.Point(223, 52);
+            this.LabelVetID.Name = "LabelVetID";
+            this.LabelVetID.Size = new System.Drawing.Size(217, 26);
+            this.LabelVetID.TabIndex = 21;
+            this.LabelVetID.Text = "Veterinaria";
+            this.LabelVetID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // label2
+            // LabelCliID
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label2, 2);
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 26);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Cliente ID *";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelCliID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelCliID, 2);
+            this.LabelCliID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCliID.Location = new System.Drawing.Point(3, 52);
+            this.LabelCliID.Name = "LabelCliID";
+            this.LabelCliID.Size = new System.Drawing.Size(214, 26);
+            this.LabelCliID.TabIndex = 2;
+            this.LabelCliID.Text = "Cliente ID";
+            this.LabelCliID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // BoxVetID
             // 
             this.BoxVetID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.SetColumnSpan(this.BoxVetID, 2);
             this.BoxVetID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BoxVetID.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxVetID.FormattingEnabled = true;
             this.BoxVetID.Location = new System.Drawing.Point(223, 81);
             this.BoxVetID.Name = "BoxVetID";
             this.BoxVetID.Size = new System.Drawing.Size(217, 21);
             this.BoxVetID.TabIndex = 24;
             // 
-            // label3
+            // LabelNombre
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label3, 2);
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(214, 26);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Nombre *";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelNombre, 2);
+            this.LabelNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNombre.Location = new System.Drawing.Point(3, 104);
+            this.LabelNombre.Name = "LabelNombre";
+            this.LabelNombre.Size = new System.Drawing.Size(214, 26);
+            this.LabelNombre.TabIndex = 22;
+            this.LabelNombre.Text = "Nombre";
+            this.LabelNombre.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextNombre
             // 
@@ -376,17 +377,17 @@ namespace Fronts {
             this.TextNombre.Size = new System.Drawing.Size(214, 21);
             this.TextNombre.TabIndex = 25;
             // 
-            // label10
+            // LabelIFE
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label10, 2);
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(223, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(217, 26);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "IFE *";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelIFE.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelIFE, 2);
+            this.LabelIFE.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelIFE.Location = new System.Drawing.Point(223, 104);
+            this.LabelIFE.Name = "LabelIFE";
+            this.LabelIFE.Size = new System.Drawing.Size(217, 26);
+            this.LabelIFE.TabIndex = 23;
+            this.LabelIFE.Text = "IFE";
+            this.LabelIFE.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextIFE
             // 
@@ -398,29 +399,29 @@ namespace Fronts {
             this.TextIFE.Size = new System.Drawing.Size(217, 21);
             this.TextIFE.TabIndex = 26;
             // 
-            // label4
+            // LabelAP
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label4, 2);
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(214, 26);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Apellido Paterno *";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelAP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelAP, 2);
+            this.LabelAP.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelAP.Location = new System.Drawing.Point(3, 156);
+            this.LabelAP.Name = "LabelAP";
+            this.LabelAP.Size = new System.Drawing.Size(214, 26);
+            this.LabelAP.TabIndex = 27;
+            this.LabelAP.Text = "Apellido Paterno";
+            this.LabelAP.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // label5
+            // LabelAM
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label5, 2);
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(223, 156);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(217, 26);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Apellido Materno *";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelAM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelAM, 2);
+            this.LabelAM.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelAM.Location = new System.Drawing.Point(223, 156);
+            this.LabelAM.Name = "LabelAM";
+            this.LabelAM.Size = new System.Drawing.Size(217, 26);
+            this.LabelAM.TabIndex = 28;
+            this.LabelAM.Text = "Apellido Materno\r\n";
+            this.LabelAM.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextAM
             // 
@@ -442,17 +443,17 @@ namespace Fronts {
             this.TextAP.Size = new System.Drawing.Size(214, 21);
             this.TextAP.TabIndex = 30;
             // 
-            // label8
+            // LabelDireccion
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.label8, 2);
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 208);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(214, 26);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Direccion *";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelDireccion, 2);
+            this.LabelDireccion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelDireccion.Location = new System.Drawing.Point(3, 208);
+            this.LabelDireccion.Name = "LabelDireccion";
+            this.LabelDireccion.Size = new System.Drawing.Size(214, 26);
+            this.LabelDireccion.TabIndex = 29;
+            this.LabelDireccion.Text = "Direccion";
+            this.LabelDireccion.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // TextDireccion
             // 
@@ -598,22 +599,22 @@ namespace Fronts {
         private System.Windows.Forms.TextBox TextAP;
         private System.Windows.Forms.TextBox TextAM;
 
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LabelDireccion;
 
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LabelAP;
+        private System.Windows.Forms.Label LabelAM;
 
         private System.Windows.Forms.TextBox TextNombre;
         private System.Windows.Forms.TextBox TextIFE;
 
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label LabelIFE;
         private System.Windows.Forms.ComboBox BoxVetID;
 
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LabelNombre;
 
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label LabelVetID;
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LabelCliID;
 
         private System.Windows.Forms.Label Titulo;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Entidades;
@@ -21,8 +20,8 @@ namespace Datos {
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadVeterinaria() {
-                VetID = 0,
-                Nombre = null,
+                VetID = -1,
+                Nombre = "Selecciona",
                 Status = false,
                 Direccion = null,
                 RFC = null

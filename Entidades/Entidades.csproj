@@ -12,6 +12,7 @@
         <AssemblyName>Entidades</AssemblyName>
         <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,6 +41,9 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="EntidadCliente.cs" />
+        <Compile Include="EntidadPaciente.cs" />
+        <Compile Include="EntidadSexo.cs" />
+        <Compile Include="EntidadTipo.cs" />
         <Compile Include="EntidadVeterinaria.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
