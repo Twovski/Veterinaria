@@ -4,34 +4,31 @@ using System.Windows.Forms;
 using Negocio;
 
 namespace Fronts {
-    public partial class Cliente : Form {
-        private NegocioCliente _negocio = new NegocioCliente();
+    public partial class Veterinario : Form {
+        private NegocioVeterinario _negocio = new NegocioVeterinario();
         
-        public Cliente() {
+        public Veterinario() {
             InitializeComponent();
-            TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-            TextCliID.Controls[0].Visible = false;
-            BoxVetID.DataSource = _negocio.ListaVeterinaria();
-            BoxVetID.DisplayMember = "Nombre";
-            BoxVetID.ValueMember = "VetID";
-            TextCliID.Text = "";
+            TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
+            TextVetID.Controls[0].Visible = false;
+            TextVetID.Text = "";
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
             if (OpcionC.Checked) {
                 string query = QueryConsulta();
-                TablaCliente.DataSource = _negocio.GetListado(query);
+                TablaVeterinario.DataSource = _negocio.GetListado(query);
             }
             
             if (OpcionG.Checked) {
                 try {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
-                    TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
+                    LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
                 }
             }
             
@@ -39,11 +36,11 @@ namespace Fronts {
                 try {
                     string query = QueryEditar();
                     _negocio.Execute(query);
-                    TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
+                    LabelCheck(new []{ "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    LabelCheck(new []{ "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" });
                 }
             }
             
@@ -51,15 +48,15 @@ namespace Fronts {
                 try {
                     string query = QueryBaja();
                     _negocio.Execute(query);
-                    TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "CliID" });
+                    TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
+                    LabelCheck(new []{ "VetID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "CliID" });
+                    LabelCheck(new []{ "VetID" });
                 }
             }
         }
-
+        
         private void LabelCheck(string[] columns) {
             foreach (string column in columns) {
                 string text = GetColumn(column);
@@ -71,12 +68,12 @@ namespace Fronts {
         }
 
         private string QueryBaja() {
-            return "UPDATE Cliente SET Status = 0 WHERE CliID = " + TextCliID.Text;
+            return "UPDATE Veterinario SET Status = 0 WHERE VetID = " + TextVetID.Text;
         }
         
         private string QueryEditar() {
-            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "Correo", "Celular", "Telefono", "VetID" };
-            string query = "UPDATE Cliente ";
+            string[] columns = { "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" };    
+            string query = "UPDATE Veterinario ";
             string condition = "SET ";
 
             foreach (string column in columns) {
@@ -85,13 +82,14 @@ namespace Fronts {
                 condition = ", ";
             }
             
-            query += " WHERE CliID = " + TextCliID.Text;
+            query += " WHERE VetID = " + TextVetID.Text;
+            
             return query;
         }
         
         private string QueryGuardar() {
-            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "Correo", "Celular", "Telefono", "VetID" };
-            string query = "INSERT INTO Cliente(";
+            string[] columns = { "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" };
+            string query = "INSERT INTO Veterinario(";
             query += "[" + string.Join("], [", columns) + "]";
             query += ") VALUES (";
             
@@ -105,8 +103,8 @@ namespace Fronts {
         }
 
         private string QueryConsulta() {
-            string[] columns = { "CliID", "VetID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "Correo", "Celular", "Telefono" };
-            string query = "SELECT * FROM VW_Cliente";
+            string[] columns = { "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" };
+            string query = "SELECT * FROM VW_Veterinario";
             string condition = " WHERE";
 
             foreach (string column in columns) {
@@ -126,27 +124,18 @@ namespace Fronts {
         
         private string GetColumn(string column) {
             switch (column) {
-                case "CliID":
-                    return TextCliID.Text;
                 case "VetID":
-                    int id = (int) BoxVetID.SelectedValue;
-                    return id == -1 ? "" : Convert.ToString(BoxVetID.SelectedValue);
-                case "Nombre":
-                    return TextNombre.Text;
-                case "IFE":
-                    return TextIFE.Text;
+                    return TextVetID.Text;
                 case "Apellido Paterno":
                     return TextAP.Text;
                 case "Apellido Materno":
                     return TextAM.Text;
-                case "Direccion":
-                    return TextDireccion.Text;
+                case "Nombre":
+                    return TextNombre.Text;
+                case "RFC":
+                    return TextRFC.Text;
                 case "Correo":
                     return TextCorreo.Text;
-                case "Celular":
-                    return TextCelular.Text;
-                case "Telefono":
-                    return TextTelefono.Text;
                 default:
                     return "";
             }
@@ -154,54 +143,47 @@ namespace Fronts {
 
         private Label GetLabel(string column) {
             switch (column) {
-                case "CliID":
-                    return LabelCliID;
                 case "VetID":
                     return LabelVetID;
-                case "Nombre":
-                    return LabelNombre;
-                case "IFE":
-                    return LabelIFE;
                 case "Apellido Paterno":
                     return LabelAP;
                 case "Apellido Materno":
                     return LabelAM;
-                case "Direccion":
-                    return LabelDireccion;
+                case "Nombre":
+                    return LabelNombre;
+                case "RFC":
+                    return LabelRFC;
+                case "Correo":
+                    return LabelCorreo;
                 default:
                     return null;
             }
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Clientes";
+            Titulo.Text = "Consultar Veterinario";
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Crear Clientes";
+            Titulo.Text = "Crear Veterinario";
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Eliminar Clientes";
+            Titulo.Text = "Eliminar Veterinario";
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Editar Clientes";
+            Titulo.Text = "Editar Veterinario";
         }
 
-        private void TablaCliente_CellClick(object sender, DataGridViewCellEventArgs e) {
-            TablaCliente.CurrentRow.Selected = true;
-            DataGridViewCellCollection Column = TablaCliente.Rows[e.RowIndex].Cells;
-            TextCliID.Text = Column["CliID"].Value.ToString().Trim();
+
+        private void TablaVeterinario_CellClick(object sender, DataGridViewCellEventArgs e) {
+            TablaVeterinario.CurrentRow.Selected = true;
+            DataGridViewCellCollection Column = TablaVeterinario.Rows[e.RowIndex].Cells;
+            TextVetID.Text = Column["VetID"].Value.ToString().Trim();
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
-            TextAP.Text = Column["Apellido Paterno"].Value.ToString().Trim();
-            TextAM.Text = Column["Apellido Materno"].Value.ToString().Trim();
-            TextDireccion.Text = Column["Direccion"].Value.ToString().Trim();
+            TextRFC.Text = Column["RFC"].Value.ToString().Trim();
             TextCorreo.Text = Column["Correo"].Value.ToString().Trim();
-            TextIFE.Text = Column["IFE"].Value.ToString().Trim();
-            TextCelular.Text = Column["Celular"].Value.ToString();
-            TextTelefono.Text = Column["Telefono"].Value.ToString();
-            BoxVetID.Text = Column["Veterinaria"].Value.ToString();
         }
     }
 }

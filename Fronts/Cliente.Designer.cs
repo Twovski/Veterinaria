@@ -530,6 +530,8 @@ namespace Fronts {
             this.tableLayoutPanel3.SetColumnSpan(this.TextCliID, 2);
             this.TextCliID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCliID.Location = new System.Drawing.Point(3, 81);
+            this.TextCliID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.TextCliID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.TextCliID.Name = "TextCliID";
             this.TextCliID.Size = new System.Drawing.Size(214, 21);
             this.TextCliID.TabIndex = 40;

@@ -17,5 +17,17 @@ namespace Fronts {
         private void BotonPaciente_Click(object sender, EventArgs e) {
             new Paciente().ShowDialog();
         }
+
+        private void OpcionVeterinario_Click(object sender, EventArgs e) {
+            new Veterinario().ShowDialog();
+        }
+
+        private void OpcionServicio_Click(object sender, EventArgs e) {
+            new Servicio().ShowDialog();
+        }
+
+        private void OpcionTT_Click(object sender, EventArgs e) {
+            new TipoTratamiento().ShowDialog();
+        }
     }
 }

@@ -28,9 +28,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.veterinarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tratamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionVeterinario = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionTT = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionServicio = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BotonCliente = new System.Windows.Forms.Button();
@@ -65,28 +65,31 @@
             // 
             // opcionesToolStripMenuItem
             // 
-            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.veterinarioToolStripMenuItem, this.tratamientoToolStripMenuItem, this.serviciosToolStripMenuItem });
+            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpcionVeterinario, this.OpcionTT, this.OpcionServicio });
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(96, 25);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // veterinarioToolStripMenuItem
+            // OpcionVeterinario
             // 
-            this.veterinarioToolStripMenuItem.Name = "veterinarioToolStripMenuItem";
-            this.veterinarioToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
-            this.veterinarioToolStripMenuItem.Text = "Veterinario";
+            this.OpcionVeterinario.Name = "OpcionVeterinario";
+            this.OpcionVeterinario.Size = new System.Drawing.Size(213, 26);
+            this.OpcionVeterinario.Text = "Veterinario";
+            this.OpcionVeterinario.Click += new System.EventHandler(this.OpcionVeterinario_Click);
             // 
-            // tratamientoToolStripMenuItem
+            // OpcionTT
             // 
-            this.tratamientoToolStripMenuItem.Name = "tratamientoToolStripMenuItem";
-            this.tratamientoToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
-            this.tratamientoToolStripMenuItem.Text = "Tratamiento";
+            this.OpcionTT.Name = "OpcionTT";
+            this.OpcionTT.Size = new System.Drawing.Size(213, 26);
+            this.OpcionTT.Text = "Tipo Tratamiento";
+            this.OpcionTT.Click += new System.EventHandler(this.OpcionTT_Click);
             // 
-            // serviciosToolStripMenuItem
+            // OpcionServicio
             // 
-            this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
-            this.serviciosToolStripMenuItem.Text = "Servicios";
+            this.OpcionServicio.Name = "OpcionServicio";
+            this.OpcionServicio.Size = new System.Drawing.Size(213, 26);
+            this.OpcionServicio.Text = "Servicios";
+            this.OpcionServicio.Click += new System.EventHandler(this.OpcionServicio_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -242,9 +245,9 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
-        private System.Windows.Forms.ToolStripMenuItem veterinarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tratamientoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpcionVeterinario;
+        private System.Windows.Forms.ToolStripMenuItem OpcionTT;
+        private System.Windows.Forms.ToolStripMenuItem OpcionServicio;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;

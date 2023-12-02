@@ -1,7 +1,7 @@
 using System.ComponentModel;
 
 namespace Fronts {
-    partial class Paciente {
+    partial class Servicio {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,7 @@ namespace Fronts {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Paciente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Servicio));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,33 +39,20 @@ namespace Fronts {
             this.OpcionC = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.BoxCliID = new System.Windows.Forms.ComboBox();
-            this.LabelCliente = new System.Windows.Forms.Label();
-            this.BoxSexo = new System.Windows.Forms.ComboBox();
             this.Titulo = new System.Windows.Forms.Label();
-            this.LabelRaza = new System.Windows.Forms.Label();
-            this.LabelPacID = new System.Windows.Forms.Label();
-            this.BoxTipoID = new System.Windows.Forms.ComboBox();
+            this.BotonCliente = new System.Windows.Forms.Button();
+            this.LabelServID = new System.Windows.Forms.Label();
+            this.TextServID = new System.Windows.Forms.NumericUpDown();
             this.LabelNombre = new System.Windows.Forms.Label();
             this.TextNombre = new System.Windows.Forms.TextBox();
-            this.LabelSexo = new System.Windows.Forms.Label();
-            this.LabelColor = new System.Windows.Forms.Label();
-            this.TextColor = new System.Windows.Forms.TextBox();
-            this.TextPacID = new System.Windows.Forms.NumericUpDown();
-            this.BotonCliente = new System.Windows.Forms.Button();
-            this.LabelEdad = new System.Windows.Forms.Label();
-            this.LabelFN = new System.Windows.Forms.Label();
-            this.DateFN = new System.Windows.Forms.DateTimePicker();
-            this.TextEdad = new System.Windows.Forms.NumericUpDown();
-            this.TablaPaciente = new System.Windows.Forms.DataGridView();
+            this.TablaServicio = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextPacID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEdad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaPaciente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextServID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaServicio)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,7 +62,7 @@ namespace Fronts {
             this.panel1.Location = new System.Drawing.Point(0, 420);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 30);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
@@ -84,7 +71,7 @@ namespace Fronts {
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 30);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 5;
             // 
             // tableLayoutPanel1
             // 
@@ -93,14 +80,14 @@ namespace Fronts {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.TablaPaciente, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TablaServicio, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 390);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tableLayoutPanel2
             // 
@@ -234,79 +221,29 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Controls.Add(this.BoxCliID, 2, 7);
-            this.tableLayoutPanel3.Controls.Add(this.LabelCliente, 2, 6);
-            this.tableLayoutPanel3.Controls.Add(this.BoxSexo, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.LabelRaza, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.LabelPacID, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.BoxTipoID, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.LabelServID, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.TextServID, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.LabelNombre, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextNombre, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.LabelSexo, 2, 4);
-            this.tableLayoutPanel3.Controls.Add(this.LabelColor, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.TextColor, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.TextPacID, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 10);
-            this.tableLayoutPanel3.Controls.Add(this.LabelEdad, 3, 8);
-            this.tableLayoutPanel3.Controls.Add(this.LabelFN, 0, 8);
-            this.tableLayoutPanel3.Controls.Add(this.DateFN, 0, 9);
-            this.tableLayoutPanel3.Controls.Add(this.TextEdad, 3, 9);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 79);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 12;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
+            this.tableLayoutPanel3.RowCount = 8;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(388, 302);
             this.tableLayoutPanel3.TabIndex = 3;
-            // 
-            // BoxCliID
-            // 
-            this.BoxCliID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BoxCliID, 2);
-            this.BoxCliID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BoxCliID.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxCliID.FormattingEnabled = true;
-            this.BoxCliID.Location = new System.Drawing.Point(197, 178);
-            this.BoxCliID.Name = "BoxCliID";
-            this.BoxCliID.Size = new System.Drawing.Size(188, 21);
-            this.BoxCliID.TabIndex = 45;
-            // 
-            // LabelCliente
-            // 
-            this.LabelCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelCliente, 2);
-            this.LabelCliente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCliente.Location = new System.Drawing.Point(197, 150);
-            this.LabelCliente.Name = "LabelCliente";
-            this.LabelCliente.Size = new System.Drawing.Size(188, 25);
-            this.LabelCliente.TabIndex = 44;
-            this.LabelCliente.Text = "Cliente";
-            this.LabelCliente.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // BoxSexo
-            // 
-            this.BoxSexo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BoxSexo, 2);
-            this.BoxSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BoxSexo.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxSexo.FormattingEnabled = true;
-            this.BoxSexo.Location = new System.Drawing.Point(197, 128);
-            this.BoxSexo.Name = "BoxSexo";
-            this.BoxSexo.Size = new System.Drawing.Size(188, 21);
-            this.BoxSexo.TabIndex = 41;
             // 
             // Titulo
             // 
@@ -316,115 +253,10 @@ namespace Fronts {
             this.Titulo.Location = new System.Drawing.Point(3, 0);
             this.Titulo.Name = "Titulo";
             this.tableLayoutPanel3.SetRowSpan(this.Titulo, 2);
-            this.Titulo.Size = new System.Drawing.Size(382, 50);
+            this.Titulo.Size = new System.Drawing.Size(382, 74);
             this.Titulo.TabIndex = 1;
-            this.Titulo.Text = "Consultar Paciente";
+            this.Titulo.Text = "Consulta Servicio";
             this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LabelRaza
-            // 
-            this.LabelRaza.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelRaza, 2);
-            this.LabelRaza.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelRaza.Location = new System.Drawing.Point(197, 50);
-            this.LabelRaza.Name = "LabelRaza";
-            this.LabelRaza.Size = new System.Drawing.Size(188, 25);
-            this.LabelRaza.TabIndex = 21;
-            this.LabelRaza.Text = "Raza";
-            this.LabelRaza.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // LabelPacID
-            // 
-            this.LabelPacID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelPacID, 2);
-            this.LabelPacID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelPacID.Location = new System.Drawing.Point(3, 50);
-            this.LabelPacID.Name = "LabelPacID";
-            this.LabelPacID.Size = new System.Drawing.Size(188, 25);
-            this.LabelPacID.TabIndex = 2;
-            this.LabelPacID.Text = "Paciente ID";
-            this.LabelPacID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // BoxTipoID
-            // 
-            this.BoxTipoID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BoxTipoID, 2);
-            this.BoxTipoID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BoxTipoID.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxTipoID.FormattingEnabled = true;
-            this.BoxTipoID.Location = new System.Drawing.Point(197, 78);
-            this.BoxTipoID.Name = "BoxTipoID";
-            this.BoxTipoID.Size = new System.Drawing.Size(188, 21);
-            this.BoxTipoID.TabIndex = 24;
-            // 
-            // LabelNombre
-            // 
-            this.LabelNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelNombre, 2);
-            this.LabelNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNombre.Location = new System.Drawing.Point(3, 100);
-            this.LabelNombre.Name = "LabelNombre";
-            this.LabelNombre.Size = new System.Drawing.Size(188, 25);
-            this.LabelNombre.TabIndex = 22;
-            this.LabelNombre.Text = "Nombre";
-            this.LabelNombre.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // TextNombre
-            // 
-            this.TextNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextNombre, 2);
-            this.TextNombre.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextNombre.Location = new System.Drawing.Point(3, 128);
-            this.TextNombre.Name = "TextNombre";
-            this.TextNombre.Size = new System.Drawing.Size(188, 21);
-            this.TextNombre.TabIndex = 25;
-            // 
-            // LabelSexo
-            // 
-            this.LabelSexo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelSexo, 2);
-            this.LabelSexo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelSexo.Location = new System.Drawing.Point(197, 100);
-            this.LabelSexo.Name = "LabelSexo";
-            this.LabelSexo.Size = new System.Drawing.Size(188, 25);
-            this.LabelSexo.TabIndex = 23;
-            this.LabelSexo.Text = "Sexo";
-            this.LabelSexo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // LabelColor
-            // 
-            this.LabelColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelColor, 2);
-            this.LabelColor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelColor.Location = new System.Drawing.Point(3, 150);
-            this.LabelColor.Name = "LabelColor";
-            this.LabelColor.Size = new System.Drawing.Size(188, 25);
-            this.LabelColor.TabIndex = 27;
-            this.LabelColor.Text = "Color";
-            this.LabelColor.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // TextColor
-            // 
-            this.TextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextColor, 2);
-            this.TextColor.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextColor.Location = new System.Drawing.Point(3, 178);
-            this.TextColor.Name = "TextColor";
-            this.TextColor.Size = new System.Drawing.Size(188, 21);
-            this.TextColor.TabIndex = 30;
-            // 
-            // TextPacID
-            // 
-            this.TextPacID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextPacID, 2);
-            this.TextPacID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextPacID.Location = new System.Drawing.Point(3, 78);
-            this.TextPacID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            this.TextPacID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextPacID.Name = "TextPacID";
-            this.TextPacID.Size = new System.Drawing.Size(188, 21);
-            this.TextPacID.TabIndex = 40;
-            this.TextPacID.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // BotonCliente
             // 
@@ -432,67 +264,67 @@ namespace Fronts {
             this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 4);
             this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonCliente.Location = new System.Drawing.Point(3, 253);
+            this.BotonCliente.Location = new System.Drawing.Point(3, 225);
             this.BotonCliente.Name = "BotonCliente";
             this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(382, 46);
+            this.BotonCliente.Size = new System.Drawing.Size(382, 74);
             this.BotonCliente.TabIndex = 24;
             this.BotonCliente.Text = "Ok";
             this.BotonCliente.UseVisualStyleBackColor = true;
             this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
             // 
-            // LabelEdad
+            // LabelServID
             // 
-            this.LabelEdad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelEdad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelEdad.Location = new System.Drawing.Point(294, 200);
-            this.LabelEdad.Name = "LabelEdad";
-            this.LabelEdad.Size = new System.Drawing.Size(91, 25);
-            this.LabelEdad.TabIndex = 28;
-            this.LabelEdad.Text = "Edad\r\n";
-            this.LabelEdad.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelServID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelServID, 2);
+            this.LabelServID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelServID.Location = new System.Drawing.Point(3, 74);
+            this.LabelServID.Name = "LabelServID";
+            this.LabelServID.Size = new System.Drawing.Size(188, 37);
+            this.LabelServID.TabIndex = 2;
+            this.LabelServID.Text = "Servicio ID";
+            this.LabelServID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // LabelFN
+            // TextServID
             // 
-            this.LabelFN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelFN, 2);
-            this.LabelFN.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelFN.Location = new System.Drawing.Point(3, 200);
-            this.LabelFN.Name = "LabelFN";
-            this.LabelFN.Size = new System.Drawing.Size(188, 25);
-            this.LabelFN.TabIndex = 29;
-            this.LabelFN.Text = "Fecha Nacimiento";
-            this.LabelFN.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.TextServID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.TextServID, 4);
+            this.TextServID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextServID.Location = new System.Drawing.Point(3, 114);
+            this.TextServID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.TextServID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.TextServID.Name = "TextServID";
+            this.TextServID.Size = new System.Drawing.Size(382, 21);
+            this.TextServID.TabIndex = 40;
+            this.TextServID.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // DateFN
+            // LabelNombre
             // 
-            this.DateFN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.DateFN.CalendarFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel3.SetColumnSpan(this.DateFN, 3);
-            this.DateFN.CustomFormat = "mm/dd/yyyy";
-            this.DateFN.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateFN.Location = new System.Drawing.Point(3, 228);
-            this.DateFN.Name = "DateFN";
-            this.DateFN.Size = new System.Drawing.Size(285, 21);
-            this.DateFN.TabIndex = 43;
+            this.LabelNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelNombre, 2);
+            this.LabelNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNombre.Location = new System.Drawing.Point(3, 148);
+            this.LabelNombre.Name = "LabelNombre";
+            this.LabelNombre.Size = new System.Drawing.Size(188, 37);
+            this.LabelNombre.TabIndex = 22;
+            this.LabelNombre.Text = "Nombre";
+            this.LabelNombre.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // TextEdad
+            // TextNombre
             // 
-            this.TextEdad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextEdad.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextEdad.Location = new System.Drawing.Point(294, 228);
-            this.TextEdad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextEdad.Name = "TextEdad";
-            this.TextEdad.Size = new System.Drawing.Size(91, 21);
-            this.TextEdad.TabIndex = 42;
-            this.TextEdad.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextEdad_KeyPress);
+            this.TextNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.TextNombre, 4);
+            this.TextNombre.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextNombre.Location = new System.Drawing.Point(3, 188);
+            this.TextNombre.Name = "TextNombre";
+            this.TextNombre.Size = new System.Drawing.Size(382, 21);
+            this.TextNombre.TabIndex = 25;
             // 
-            // TablaPaciente
+            // TablaServicio
             // 
-            this.TablaPaciente.AllowUserToAddRows = false;
-            this.TablaPaciente.AllowUserToDeleteRows = false;
-            this.TablaPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.TablaServicio.AllowUserToAddRows = false;
+            this.TablaServicio.AllowUserToDeleteRows = false;
+            this.TablaServicio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -500,15 +332,15 @@ namespace Fronts {
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaPaciente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TablaPaciente.Location = new System.Drawing.Point(3, 3);
-            this.TablaPaciente.Name = "TablaPaciente";
-            this.TablaPaciente.ReadOnly = true;
-            this.TablaPaciente.Size = new System.Drawing.Size(394, 384);
-            this.TablaPaciente.TabIndex = 0;
-            this.TablaPaciente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaPaciente_CellClick);
+            this.TablaServicio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.TablaServicio.Location = new System.Drawing.Point(3, 3);
+            this.TablaServicio.Name = "TablaServicio";
+            this.TablaServicio.ReadOnly = true;
+            this.TablaServicio.Size = new System.Drawing.Size(394, 384);
+            this.TablaServicio.TabIndex = 0;
+            this.TablaServicio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaServicio_CellClick);
             // 
-            // Paciente
+            // Servicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -516,31 +348,18 @@ namespace Fronts {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Paciente";
-            this.Text = "Paciente";
+            this.Name = "Servicio";
+            this.Text = "Servicio";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextPacID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEdad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaPaciente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextServID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaServicio)).EndInit();
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.Label LabelCliente;
-
-        private System.Windows.Forms.ComboBox BoxCliID;
-
-        private System.Windows.Forms.Label label1;
-
-        private System.Windows.Forms.DateTimePicker DateFN;
-
-        private System.Windows.Forms.NumericUpDown TextEdad;
-
-        private System.Windows.Forms.ComboBox BoxSexo;
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -551,20 +370,13 @@ namespace Fronts {
         private System.Windows.Forms.RadioButton OpcionC;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button BotonCliente;
         private System.Windows.Forms.Label Titulo;
-        private System.Windows.Forms.Label LabelRaza;
-        private System.Windows.Forms.Label LabelPacID;
-        private System.Windows.Forms.ComboBox BoxTipoID;
-        private System.Windows.Forms.Label LabelNombre;
+        private System.Windows.Forms.Label LabelServID;
+        private System.Windows.Forms.NumericUpDown TextServID;
         private System.Windows.Forms.TextBox TextNombre;
-        private System.Windows.Forms.Label LabelSexo;
-        private System.Windows.Forms.Label LabelColor;
-        private System.Windows.Forms.Label LabelEdad;
-        private System.Windows.Forms.TextBox TextColor;
-        private System.Windows.Forms.Label LabelFN;
-        private System.Windows.Forms.NumericUpDown TextPacID;
-        private System.Windows.Forms.DataGridView TablaPaciente;
+        private System.Windows.Forms.Label LabelNombre;
+        private System.Windows.Forms.Button BotonCliente;
+        private System.Windows.Forms.DataGridView TablaServicio;
 
         private System.Windows.Forms.Panel panel2;
 
