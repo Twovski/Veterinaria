@@ -1,7 +1,7 @@
 using System.ComponentModel;
 
 namespace Fronts {
-    partial class TipoTratamiento {
+    partial class Tratamiento {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,7 +26,7 @@ namespace Fronts {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TipoTratamiento));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tratamiento));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -37,10 +37,12 @@ namespace Fronts {
             this.OpcionC = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.BoxTipoID = new System.Windows.Forms.ComboBox();
+            this.LabelTipo = new System.Windows.Forms.Label();
             this.Titulo = new System.Windows.Forms.Label();
             this.BotonCliente = new System.Windows.Forms.Button();
-            this.LabelTipoID = new System.Windows.Forms.Label();
-            this.TextTipoID = new System.Windows.Forms.NumericUpDown();
+            this.LabelTraID = new System.Windows.Forms.Label();
+            this.TextTraID = new System.Windows.Forms.NumericUpDown();
             this.LabelNombre = new System.Windows.Forms.Label();
             this.TextNombre = new System.Windows.Forms.TextBox();
             this.TablaTT = new System.Windows.Forms.DataGridView();
@@ -51,7 +53,7 @@ namespace Fronts {
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextTipoID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextTraID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaTT)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,10 +205,12 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Controls.Add(this.BoxTipoID, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.LabelTipo, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.LabelTipoID, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.TextTipoID, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.LabelTraID, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.TextTraID, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.LabelNombre, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextNombre, 0, 5);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 79);
@@ -227,6 +231,30 @@ namespace Fronts {
             this.tableLayoutPanel3.Size = new System.Drawing.Size(388, 302);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
+            // BoxTipoID
+            // 
+            this.BoxTipoID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BoxTipoID, 2);
+            this.BoxTipoID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BoxTipoID.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BoxTipoID.FormattingEnabled = true;
+            this.BoxTipoID.Location = new System.Drawing.Point(197, 114);
+            this.BoxTipoID.Name = "BoxTipoID";
+            this.BoxTipoID.Size = new System.Drawing.Size(188, 21);
+            this.BoxTipoID.TabIndex = 42;
+            // 
+            // LabelTipo
+            // 
+            this.LabelTipo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelTipo, 2);
+            this.LabelTipo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTipo.Location = new System.Drawing.Point(197, 74);
+            this.LabelTipo.Name = "LabelTipo";
+            this.LabelTipo.Size = new System.Drawing.Size(188, 37);
+            this.LabelTipo.TabIndex = 41;
+            this.LabelTipo.Text = "Tipo";
+            this.LabelTipo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // Titulo
             // 
             this.Titulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,7 +265,7 @@ namespace Fronts {
             this.tableLayoutPanel3.SetRowSpan(this.Titulo, 2);
             this.Titulo.Size = new System.Drawing.Size(382, 74);
             this.Titulo.TabIndex = 1;
-            this.Titulo.Text = "Agr";
+            this.Titulo.Text = "Consulta Tratamiento";
             this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BotonCliente
@@ -255,30 +283,30 @@ namespace Fronts {
             this.BotonCliente.UseVisualStyleBackColor = true;
             this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
             // 
-            // LabelTipoID
+            // LabelTraID
             // 
-            this.LabelTipoID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelTipoID, 2);
-            this.LabelTipoID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelTipoID.Location = new System.Drawing.Point(3, 74);
-            this.LabelTipoID.Name = "LabelTipoID";
-            this.LabelTipoID.Size = new System.Drawing.Size(188, 37);
-            this.LabelTipoID.TabIndex = 2;
-            this.LabelTipoID.Text = "Tratamiento ID";
-            this.LabelTipoID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelTraID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelTraID, 2);
+            this.LabelTraID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTraID.Location = new System.Drawing.Point(3, 74);
+            this.LabelTraID.Name = "LabelTraID";
+            this.LabelTraID.Size = new System.Drawing.Size(188, 37);
+            this.LabelTraID.TabIndex = 2;
+            this.LabelTraID.Text = "Tratamiento ID";
+            this.LabelTraID.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // TextTipoID
+            // TextTraID
             // 
-            this.TextTipoID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextTipoID, 4);
-            this.TextTipoID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextTipoID.Location = new System.Drawing.Point(3, 114);
-            this.TextTipoID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            this.TextTipoID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextTipoID.Name = "TextTipoID";
-            this.TextTipoID.Size = new System.Drawing.Size(382, 21);
-            this.TextTipoID.TabIndex = 40;
-            this.TextTipoID.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            this.TextTraID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.TextTraID, 2);
+            this.TextTraID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextTraID.Location = new System.Drawing.Point(3, 114);
+            this.TextTraID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.TextTraID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.TextTraID.Name = "TextTraID";
+            this.TextTraID.Size = new System.Drawing.Size(188, 21);
+            this.TextTraID.TabIndex = 40;
+            this.TextTraID.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // LabelNombre
             // 
@@ -340,7 +368,7 @@ namespace Fronts {
             this.panel1.Size = new System.Drawing.Size(800, 30);
             this.panel1.TabIndex = 7;
             // 
-            // TipoTratamiento
+            // Tratamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -348,18 +376,22 @@ namespace Fronts {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "TipoTratamiento";
-            this.Text = "TipoTratamiento";
+            this.Name = "Tratamiento";
+            this.Text = "Tratamiento";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextTipoID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextTraID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaTT)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ComboBox BoxTipoID;
+
+        private System.Windows.Forms.Label LabelTipo;
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -372,8 +404,8 @@ namespace Fronts {
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label Titulo;
         private System.Windows.Forms.Button BotonCliente;
-        private System.Windows.Forms.Label LabelTipoID;
-        private System.Windows.Forms.NumericUpDown TextTipoID;
+        private System.Windows.Forms.Label LabelTraID;
+        private System.Windows.Forms.NumericUpDown TextTraID;
         private System.Windows.Forms.Label LabelNombre;
         private System.Windows.Forms.TextBox TextNombre;
         private System.Windows.Forms.DataGridView TablaTT;

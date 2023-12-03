@@ -4,14 +4,17 @@ using System.Windows.Forms;
 using Negocio;
 
 namespace Fronts {
-    public partial class TipoTratamiento : Form {
-        private NegocioTipoTratamiento _negocio = new NegocioTipoTratamiento();
+    public partial class Tratamiento : Form {
+        private NegocioTratamiento _negocio = new NegocioTratamiento();
         
-        public TipoTratamiento() {
+        public Tratamiento() {
             InitializeComponent();
-            TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_TipoTratamiento");
-            TextTipoID.Controls[0].Visible = false;
-            TextTipoID.Text = "";
+            TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
+            TextTraID.Controls[0].Visible = false;
+            TextTraID.Text = "";
+            BoxTipoID.DataSource = _negocio.ListaTipoTratamientos();
+            BoxTipoID.DisplayMember = "Nombre";
+            BoxTipoID.ValueMember = "TipoID";
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
@@ -24,7 +27,7 @@ namespace Fronts {
                 try {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
-                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_TipoTratamiento");
+                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
                     LabelCheck(new []{ "TipoID", "Nombre" });
                 }
                 catch (Exception exception) {
@@ -36,11 +39,12 @@ namespace Fronts {
                 try {
                     string query = QueryEditar();
                     _negocio.Execute(query);
-                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_TipoTratamiento");
-                    LabelCheck(new []{ "TipoID", "Nombre" });
+                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
+                    LabelCheck(new []{ "TraID", "TraID", "Nombre" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "TipoID", "Nombre" });
+                    Console.WriteLine(exception);
+                    LabelCheck(new []{ "TraID", "TraID", "Nombre" });
                 }
             }
             
@@ -48,11 +52,11 @@ namespace Fronts {
                 try {
                     string query = QueryBaja();
                     _negocio.Execute(query);
-                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_TipoTratamiento");
-                    LabelCheck(new []{ "TipoID" });
+                    TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
+                    LabelCheck(new []{ "TraID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "TipoID" });
+                    LabelCheck(new []{ "TraID" });
                 }
             }
         }
@@ -68,12 +72,12 @@ namespace Fronts {
         }
 
         private string QueryBaja() {
-            return "UPDATE TipoTratamiento SET Status = 0 WHERE TipoID = " + TextTipoID.Text;
+            return "UPDATE Tratamiento SET Status = 0 WHERE TraID = " + TextTraID.Text;
         }
         
         private string QueryEditar() {
-            string[] columns = { "Nombre" };    
-            string query = "UPDATE TipoTratamiento ";
+            string[] columns = { "Nombre", "TipoID" };    
+            string query = "UPDATE Tratamiento ";
             string condition = "SET ";
 
             foreach (string column in columns) {
@@ -82,13 +86,13 @@ namespace Fronts {
                 condition = ", ";
             }
             
-            query += " WHERE TipoID = " + TextTipoID.Text;
+            query += " WHERE TraID = " + TextTraID.Text;
             return query;
         }
         
         private string QueryGuardar() {
-            string[] columns = { "Nombre"  };
-            string query = "INSERT INTO TipoTratamiento(";
+            string[] columns = { "Nombre", "TipoID"  };
+            string query = "INSERT INTO Tratamiento(";
             query += "[" + string.Join("], [", columns) + "]";
             query += ") VALUES (";
             
@@ -102,8 +106,8 @@ namespace Fronts {
         }
 
         private string QueryConsulta() {
-            string[] columns = { "TipoID", "Nombre" };
-            string query = "SELECT * FROM VW_TipoTratamiento";
+            string[] columns = { "TipoID", "Nombre", "TraID" };
+            string query = "SELECT * FROM VW_Tratamiento";
             string condition = " WHERE";
 
             foreach (string column in columns) {
@@ -122,11 +126,15 @@ namespace Fronts {
         }
         
         private string GetColumn(string column) {
+            int id;
             switch (column) {
-                case "TipoID":
-                    return TextTipoID.Text;
+                case "TraID":
+                    return TextTraID.Text;
                 case "Nombre":
                     return TextNombre.Text;
+                case "TipoID":
+                    id = (int) BoxTipoID.SelectedValue;
+                    return id == -1 ? "" : Convert.ToString(id);
                 default:
                     return "";
             }
@@ -134,36 +142,42 @@ namespace Fronts {
 
         private Label GetLabel(string column) {
             switch (column) {
-                case "TipoID":
-                    return LabelTipoID;
+                case "TraID":
+                    return LabelTraID;
                 case "Nombre":
                     return LabelNombre;
+                case "TipoID":
+                    return LabelTipo;
                 default:
                     return null;
             }
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Tipo Tratamiento";
+            Titulo.Text = "Consultar Tratamiento";
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Crear Tipo Tratamiento";
+            Titulo.Text = "Crear Tratamiento";
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Eliminar Tipo Tratamiento";
+            Titulo.Text = "Eliminar Tratamiento";
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Editar Tipo Tratamiento";
+            Titulo.Text = "Editar Tratamiento";
         }
         
         private void TablaTT_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex == -1)
+                return;
+            
             TablaTT.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaTT.Rows[e.RowIndex].Cells;
-            TextTipoID.Text = Column["TipoID"].Value.ToString().Trim();
+            TextTraID.Text = Column["TraID"].Value.ToString().Trim();
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
+            BoxTipoID.Text = Column["Tipo Tratamiento"].Value.ToString().Trim();
         }
     }
 }

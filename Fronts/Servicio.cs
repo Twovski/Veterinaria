@@ -117,6 +117,9 @@ namespace Fronts {
         }
 
         private void TablaServicio_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex == -1)
+                return;
+            
             TablaServicio.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaServicio.Rows[e.RowIndex].Cells;
             TextServID.Text = Column["ServID"].Value.ToString().Trim();
@@ -134,10 +137,10 @@ namespace Fronts {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaServicio.DataSource = _negocio.GetListado("SELECT * FROM VW_Servicio");
-                    LabelCheck(new []{ "ServID", "Nombre" });
+                    LabelCheck(new []{ "Nombre" });
                 }
                 catch (Exception exception) { 
-                    LabelCheck(new []{ "ServID", "Nombre" });
+                    LabelCheck(new []{ "Nombre" });
                 }
             }
             

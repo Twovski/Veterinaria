@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,20 +13,21 @@ namespace Datos {
             table.Load(reader);
             table.Columns["CliID"].ColumnMapping = MappingType.Hidden;
             table.Columns["TipoID"].ColumnMapping = MappingType.Hidden;
+            table.Columns["Status"].ColumnMapping = MappingType.Hidden;
             return table;
         }
 
-        public List<EntidadTipo> ListaTipo() {
-            List<EntidadTipo> list = new List<EntidadTipo>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tipo", SQL.Connection);
+        public List<EntidadTipoAnimal> ListaTipoAnimal() {
+            List<EntidadTipoAnimal> list = new List<EntidadTipoAnimal>();
+            SqlCommand command = new SqlCommand("SELECT * FROM TipoAnimal", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
-            list.Add(new EntidadTipo() {
+            list.Add(new EntidadTipoAnimal() {
                 TipoID = -1,
                 Nombre = "Selecciona"
             });
             while (reader.Read()) {
-                list.Add(new EntidadTipo() {
+                list.Add(new EntidadTipoAnimal() {
                     TipoID = reader.GetInt32(0),
                     Nombre = reader.GetString(1),
                 });
@@ -36,7 +38,7 @@ namespace Datos {
         
         public List<EntidadCliente> ListaCliente() {
             List<EntidadCliente> list = new List<EntidadCliente>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Cliente", SQL.Connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Cliente WHERE Status = 1", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadCliente() {
@@ -71,6 +73,26 @@ namespace Datos {
             return list;
         }
 
+        public EntidadPaciente GetPaciente(string query) {
+            SqlCommand command = new SqlCommand(query, SQL.Connection);
+            SqlDataReader reader = command.ExecuteReader();
+            EntidadPaciente paciente = null;
+            if (reader.Read()) 
+                paciente = new EntidadPaciente() {
+                    PacID = reader.GetInt32(0),
+                    Nombre = reader.GetString(1),
+                    Sexo = reader.GetBoolean(2),
+                    Color = reader.GetString(3),
+                    Status = reader.GetBoolean(4),
+                    FechaNacimiento = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5),
+                    Edad = reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6),
+                    CliID = reader.GetInt32(7),
+                    TipoID = reader.GetInt32(9)
+                };
+            
+            return paciente;
+        }
+        
         public int Execute(string query) {
             SqlCommand command = new SqlCommand(query, SQL.Connection);
             return command.ExecuteNonQuery();

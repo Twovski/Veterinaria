@@ -43,7 +43,7 @@ namespace Fronts {
             this.LabelCliente = new System.Windows.Forms.Label();
             this.BoxSexo = new System.Windows.Forms.ComboBox();
             this.Titulo = new System.Windows.Forms.Label();
-            this.LabelRaza = new System.Windows.Forms.Label();
+            this.LabelTA = new System.Windows.Forms.Label();
             this.LabelPacID = new System.Windows.Forms.Label();
             this.BoxTipoID = new System.Windows.Forms.ComboBox();
             this.LabelNombre = new System.Windows.Forms.Label();
@@ -238,7 +238,7 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.LabelCliente, 2, 6);
             this.tableLayoutPanel3.Controls.Add(this.BoxSexo, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.LabelRaza, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.LabelTA, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.LabelPacID, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.BoxTipoID, 2, 3);
             this.tableLayoutPanel3.Controls.Add(this.LabelNombre, 0, 4);
@@ -321,17 +321,17 @@ namespace Fronts {
             this.Titulo.Text = "Consultar Paciente";
             this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LabelRaza
+            // LabelTA
             // 
-            this.LabelRaza.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelRaza, 2);
-            this.LabelRaza.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelRaza.Location = new System.Drawing.Point(197, 50);
-            this.LabelRaza.Name = "LabelRaza";
-            this.LabelRaza.Size = new System.Drawing.Size(188, 25);
-            this.LabelRaza.TabIndex = 21;
-            this.LabelRaza.Text = "Raza";
-            this.LabelRaza.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelTA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelTA, 2);
+            this.LabelTA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTA.Location = new System.Drawing.Point(197, 50);
+            this.LabelTA.Name = "LabelTA";
+            this.LabelTA.Size = new System.Drawing.Size(188, 25);
+            this.LabelTA.TabIndex = 21;
+            this.LabelTA.Text = "Tipo Animal";
+            this.LabelTA.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // LabelPacID
             // 
@@ -486,13 +486,11 @@ namespace Fronts {
             this.TextEdad.Size = new System.Drawing.Size(91, 21);
             this.TextEdad.TabIndex = 42;
             this.TextEdad.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextEdad_KeyPress);
             // 
             // TablaPaciente
             // 
             this.TablaPaciente.AllowUserToAddRows = false;
             this.TablaPaciente.AllowUserToDeleteRows = false;
-            this.TablaPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -553,7 +551,7 @@ namespace Fronts {
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BotonCliente;
         private System.Windows.Forms.Label Titulo;
-        private System.Windows.Forms.Label LabelRaza;
+        private System.Windows.Forms.Label LabelTA;
         private System.Windows.Forms.Label LabelPacID;
         private System.Windows.Forms.ComboBox BoxTipoID;
         private System.Windows.Forms.Label LabelNombre;

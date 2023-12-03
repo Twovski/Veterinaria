@@ -14,10 +14,13 @@ namespace Negocio {
             return _dato.ListaCliente();
         }
 
-        public List<EntidadTipo> ListaTipo() {
-            return _dato.ListaTipo();
+        public List<EntidadTipoAnimal> ListaTipo() {
+            return _dato.ListaTipoAnimal();
         }
-        
+
+        public EntidadPaciente GetPaciente(string query) {
+            return _dato.GetPaciente(query);
+        }
         public int Execute(string query) {
             return _dato.Execute(query);
         }

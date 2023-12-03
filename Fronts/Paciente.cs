@@ -8,8 +8,10 @@ using Negocio;
 namespace Fronts {
     public partial class Paciente : Form {
         private NegocioPaciente _negocio = new NegocioPaciente();
+        public EntidadPaciente EPaciente = null;
+        public bool Consulta;
 
-        public Paciente() {
+        public Paciente(bool consulta) {
             InitializeComponent();
             TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
             TextPacID.Controls[0].Visible = false;
@@ -43,6 +45,15 @@ namespace Fronts {
             
             TextPacID.Text = "";
             TextEdad.Text = "";
+
+            Consulta = consulta;
+            if (consulta) {
+                OpcionB.Dispose();
+                OpcionG.Dispose();
+                OpcionE.Dispose();
+                tableLayoutPanel3.SetRow(OpcionC, 0);
+                tableLayoutPanel3.SetColumn(OpcionC, 4);
+            }
         }
         
         private void LabelCheck(string[] columns) {
@@ -144,7 +155,7 @@ namespace Fronts {
                 case "CliID":
                     return LabelCliente;
                 case "TipoID":
-                    return LabelRaza;
+                    return LabelTA;
                 case "Sexo":
                     return LabelSexo;
                 case "Nombre":
@@ -154,11 +165,6 @@ namespace Fronts {
                 default:
                     return null;
             }
-        }
-
-        private void TextEdad_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == '-') 
-                e.Handled = true;
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
@@ -178,11 +184,22 @@ namespace Fronts {
         }
 
         private void TablaPaciente_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex == -1)
+                return;
+            
             TablaPaciente.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaPaciente.Rows[e.RowIndex].Cells;
-            TextPacID.Text = Column["PacID"].Value.ToString().Trim();
+            string pacID = Column["PacID"].Value.ToString().Trim();
+            
+            if (Consulta) {
+                string query = $"SELECT * FROM VW_Paciente WHERE PacID = {pacID}";
+                EPaciente = _negocio.GetPaciente(query);
+                Close();
+            }
+            
+            TextPacID.Text = pacID;
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
-            BoxTipoID.Text = Column["Raza"].Value.ToString().Trim();
+            BoxTipoID.Text = Column["Tipo Animal"].Value.ToString().Trim();
             BoxSexo.Text = GetSexo((bool) Column["Sexo"].Value);
             TextColor.Text = Column["Color"].Value.ToString().Trim();
             BoxCliID.Text = Column["Cliente"].Value.ToString().Trim();
@@ -205,10 +222,10 @@ namespace Fronts {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color" });
+                    LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color" });
+                    LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 }
             }
             
@@ -217,10 +234,10 @@ namespace Fronts {
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color" });
+                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color" });
+                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                     
                 }
             }

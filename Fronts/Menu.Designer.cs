@@ -29,13 +29,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpcionVeterinario = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpcionTT = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionTratamiento = new System.Windows.Forms.ToolStripMenuItem();
             this.OpcionServicio = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BotonCliente = new System.Windows.Forms.Button();
             this.BotonPaciente = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BotonExpediente = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             // 
             // opcionesToolStripMenuItem
             // 
-            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpcionVeterinario, this.OpcionTT, this.OpcionServicio });
+            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpcionVeterinario, this.OpcionTratamiento, this.OpcionServicio });
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(96, 25);
             this.opcionesToolStripMenuItem.Text = "Opciones";
@@ -73,21 +73,21 @@
             // OpcionVeterinario
             // 
             this.OpcionVeterinario.Name = "OpcionVeterinario";
-            this.OpcionVeterinario.Size = new System.Drawing.Size(213, 26);
+            this.OpcionVeterinario.Size = new System.Drawing.Size(177, 26);
             this.OpcionVeterinario.Text = "Veterinario";
             this.OpcionVeterinario.Click += new System.EventHandler(this.OpcionVeterinario_Click);
             // 
-            // OpcionTT
+            // OpcionTratamiento
             // 
-            this.OpcionTT.Name = "OpcionTT";
-            this.OpcionTT.Size = new System.Drawing.Size(213, 26);
-            this.OpcionTT.Text = "Tipo Tratamiento";
-            this.OpcionTT.Click += new System.EventHandler(this.OpcionTT_Click);
+            this.OpcionTratamiento.Name = "OpcionTratamiento";
+            this.OpcionTratamiento.Size = new System.Drawing.Size(177, 26);
+            this.OpcionTratamiento.Text = "Tratamiento";
+            this.OpcionTratamiento.Click += new System.EventHandler(this.OpcionTratamiento_Click);
             // 
             // OpcionServicio
             // 
             this.OpcionServicio.Name = "OpcionServicio";
-            this.OpcionServicio.Size = new System.Drawing.Size(213, 26);
+            this.OpcionServicio.Size = new System.Drawing.Size(177, 26);
             this.OpcionServicio.Text = "Servicios";
             this.OpcionServicio.Click += new System.EventHandler(this.OpcionServicio_Click);
             // 
@@ -108,7 +108,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.BotonCliente, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.BotonPaciente, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.BotonExpediente, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
@@ -159,22 +159,23 @@
             this.BotonPaciente.UseVisualStyleBackColor = false;
             this.BotonPaciente.Click += new System.EventHandler(this.BotonPaciente_Click);
             // 
-            // button3
+            // BotonExpediente
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Transparent;
-            this.button3.Location = new System.Drawing.Point(535, 133);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(262, 124);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
+            this.BotonExpediente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.BotonExpediente.BackColor = System.Drawing.Color.Transparent;
+            this.BotonExpediente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BotonExpediente.BackgroundImage")));
+            this.BotonExpediente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BotonExpediente.FlatAppearance.BorderSize = 0;
+            this.BotonExpediente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
+            this.BotonExpediente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
+            this.BotonExpediente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonExpediente.ForeColor = System.Drawing.Color.Transparent;
+            this.BotonExpediente.Location = new System.Drawing.Point(535, 133);
+            this.BotonExpediente.Name = "BotonExpediente";
+            this.BotonExpediente.Size = new System.Drawing.Size(262, 124);
+            this.BotonExpediente.TabIndex = 2;
+            this.BotonExpediente.UseVisualStyleBackColor = false;
+            this.BotonExpediente.Click += new System.EventHandler(this.BotonExpediente_Click);
             // 
             // label1
             // 
@@ -241,12 +242,12 @@
 
         private System.Windows.Forms.Button BotonCliente;
         private System.Windows.Forms.Button BotonPaciente;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BotonExpediente;
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
         private System.Windows.Forms.ToolStripMenuItem OpcionVeterinario;
-        private System.Windows.Forms.ToolStripMenuItem OpcionTT;
+        private System.Windows.Forms.ToolStripMenuItem OpcionTratamiento;
         private System.Windows.Forms.ToolStripMenuItem OpcionServicio;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
 

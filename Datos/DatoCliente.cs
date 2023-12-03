@@ -16,7 +16,7 @@ namespace Datos {
 
         public List<EntidadVeterinaria> ListaVeterinaria() {
             List<EntidadVeterinaria> list = new List<EntidadVeterinaria>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Veterinaria", SQL.Connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Veterinaria WHERE Status = 1", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadVeterinaria() {

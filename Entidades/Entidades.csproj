@@ -44,8 +44,9 @@
         <Compile Include="EntidadPaciente.cs" />
         <Compile Include="EntidadServicio.cs" />
         <Compile Include="EntidadSexo.cs" />
-        <Compile Include="EntidadTipo.cs" />
+        <Compile Include="EntidadTipoAnimal.cs" />
         <Compile Include="EntidadTipoTratamiento.cs" />
+        <Compile Include="EntidadTratamiento.cs" />
         <Compile Include="EntidadVeterinaria.cs" />
         <Compile Include="EntidadVeterinario.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>

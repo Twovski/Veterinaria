@@ -48,6 +48,24 @@
     <ItemGroup>
         <Compile Include="Cliente.cs" />
         <Compile Include="Cliente.Designer.cs" />
+        <Compile Include="Expediente.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Expediente.Designer.cs">
+          <DependentUpon>Expediente.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Historial.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Historial.Designer.cs">
+          <DependentUpon>Historial.cs</DependentUpon>
+        </Compile>
+        <Compile Include="LoginVeterinario.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="LoginVeterinario.Designer.cs">
+          <DependentUpon>LoginVeterinario.cs</DependentUpon>
+        </Compile>
         <Compile Include="Menu.cs" />
         <Compile Include="Menu.Designer.cs" />
         <Compile Include="Paciente.cs">
@@ -64,11 +82,17 @@
         <Compile Include="Servicio.Designer.cs">
           <DependentUpon>Servicio.cs</DependentUpon>
         </Compile>
-        <Compile Include="TipoTratamiento.cs">
+        <Compile Include="Tratamiento.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="TipoTratamiento.Designer.cs">
-          <DependentUpon>TipoTratamiento.cs</DependentUpon>
+        <Compile Include="Tratamiento.Designer.cs">
+          <DependentUpon>Tratamiento.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Vacunas.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Vacunas.Designer.cs">
+          <DependentUpon>Vacunas.cs</DependentUpon>
         </Compile>
         <Compile Include="Veterinario.cs">
           <SubType>Form</SubType>
@@ -77,6 +101,15 @@
           <DependentUpon>Veterinario.cs</DependentUpon>
         </Compile>
         <EmbeddedResource Include="Cliente.resx" />
+        <EmbeddedResource Include="Expediente.resx">
+          <DependentUpon>Expediente.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Historial.resx">
+          <DependentUpon>Historial.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="LoginVeterinario.resx">
+          <DependentUpon>LoginVeterinario.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Menu.resx" />
         <EmbeddedResource Include="Paciente.resx">
           <DependentUpon>Paciente.cs</DependentUpon>
@@ -93,8 +126,11 @@
         <EmbeddedResource Include="Servicio.resx">
           <DependentUpon>Servicio.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="TipoTratamiento.resx">
-          <DependentUpon>TipoTratamiento.cs</DependentUpon>
+        <EmbeddedResource Include="Tratamiento.resx">
+          <DependentUpon>Tratamiento.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Vacunas.resx">
+          <DependentUpon>Vacunas.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Veterinario.resx">
           <DependentUpon>Veterinario.cs</DependentUpon>
@@ -128,14 +164,18 @@
       <Content Include="Resources\Eliminar.png" />
       <Content Include="Resources\Guardar.png" />
       <Content Include="Resources\Icon.png" />
+      <Content Include="Resources\Logo_Auth.png" />
       <Content Include="Resources\Logo_Cliente.png" />
+      <Content Include="Resources\Logo_Desparasitante.png" />
       <Content Include="Resources\Logo_Expediente.png" />
+      <Content Include="Resources\Logo_Historial.png" />
       <Content Include="Resources\Logo_MenuServicio.png" />
       <Content Include="Resources\Logo_MenuTratamiento.png" />
       <Content Include="Resources\Logo_MenuVeterinario.png" />
       <Content Include="Resources\Logo_Paciente.png" />
       <Content Include="Resources\Logo_Servicio.png" />
       <Content Include="Resources\Logo_Tratamiento.png" />
+      <Content Include="Resources\Logo_Vacuna.png" />
       <Content Include="Resources\Logo_Veterinario.png" />
       <Content Include="Resources\Menu.png" />
       <Content Include="Resources\Opcion.png" />

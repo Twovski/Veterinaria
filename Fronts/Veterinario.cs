@@ -178,6 +178,9 @@ namespace Fronts {
 
 
         private void TablaVeterinario_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex == -1)
+                return;
+            
             TablaVeterinario.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaVeterinario.Rows[e.RowIndex].Cells;
             TextVetID.Text = Column["VetID"].Value.ToString().Trim();

@@ -40,9 +40,10 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DatoCliente.cs" />
+        <Compile Include="DatoDetalle.cs" />
         <Compile Include="DatoPaciente.cs" />
         <Compile Include="DatoServicio.cs" />
-        <Compile Include="DatoTipoTratamiento.cs" />
+        <Compile Include="DatoTratamiento.cs" />
         <Compile Include="DatoVeterinario.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SQL.cs" />

@@ -1,5 +1,6 @@
 using System.Data;
 using Datos;
+using Entidades;
 
 namespace Negocio {
     public class NegocioVeterinario {
@@ -11,6 +12,10 @@ namespace Negocio {
 
         public int Execute(string query) {
             return _dato.Execute(query);
+        }
+
+        public EntidadVeterinario Login(string query) {
+            return _dato.Login(query);
         }
     }
 }
