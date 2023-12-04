@@ -48,23 +48,29 @@
     <ItemGroup>
         <Compile Include="Cliente.cs" />
         <Compile Include="Cliente.Designer.cs" />
+        <Compile Include="Desparasitante.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Desparasitante.Designer.cs">
+          <DependentUpon>Desparasitante.cs</DependentUpon>
+        </Compile>
         <Compile Include="Expediente.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Expediente.Designer.cs">
           <DependentUpon>Expediente.cs</DependentUpon>
         </Compile>
-        <Compile Include="Historial.cs">
+        <Compile Include="Consultas.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Historial.Designer.cs">
-          <DependentUpon>Historial.cs</DependentUpon>
+        <Compile Include="Consultas.Designer.cs">
+          <DependentUpon>Consultas.cs</DependentUpon>
         </Compile>
-        <Compile Include="LoginVeterinario.cs">
+        <Compile Include="Login.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="LoginVeterinario.Designer.cs">
-          <DependentUpon>LoginVeterinario.cs</DependentUpon>
+        <Compile Include="Login.Designer.cs">
+          <DependentUpon>Login.cs</DependentUpon>
         </Compile>
         <Compile Include="Menu.cs" />
         <Compile Include="Menu.Designer.cs" />
@@ -74,8 +80,8 @@
         <Compile Include="Paciente.Designer.cs">
           <DependentUpon>Paciente.cs</DependentUpon>
         </Compile>
-        <Compile Include="Program.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Servicio.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -101,14 +107,17 @@
           <DependentUpon>Veterinario.cs</DependentUpon>
         </Compile>
         <EmbeddedResource Include="Cliente.resx" />
+        <EmbeddedResource Include="Desparasitante.resx">
+          <DependentUpon>Desparasitante.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Expediente.resx">
           <DependentUpon>Expediente.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="Historial.resx">
-          <DependentUpon>Historial.cs</DependentUpon>
+        <EmbeddedResource Include="Consultas.resx">
+          <DependentUpon>Consultas.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="LoginVeterinario.resx">
-          <DependentUpon>LoginVeterinario.cs</DependentUpon>
+        <EmbeddedResource Include="Login.resx">
+          <DependentUpon>Login.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Menu.resx" />
         <EmbeddedResource Include="Paciente.resx">

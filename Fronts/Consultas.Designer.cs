@@ -1,7 +1,7 @@
 using System.ComponentModel;
 
 namespace Fronts {
-    partial class Historial {
+    partial class Consultas {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,15 +26,16 @@ namespace Fronts {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Historial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Consultas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.TextTPID = new System.Windows.Forms.NumericUpDown();
-            this.LabelHistorial = new System.Windows.Forms.Label();
+            this.BotonLimpiar = new System.Windows.Forms.Button();
+            this.TextCitaID = new System.Windows.Forms.NumericUpDown();
+            this.LabelCita = new System.Windows.Forms.Label();
             this.Titulo = new System.Windows.Forms.Label();
             this.BotonCliente = new System.Windows.Forms.Button();
             this.LabelAnotaciones = new System.Windows.Forms.Label();
@@ -45,21 +46,21 @@ namespace Fronts {
             this.LabelServicio = new System.Windows.Forms.Label();
             this.BoxPacID = new System.Windows.Forms.ComboBox();
             this.LabelPaciente = new System.Windows.Forms.Label();
-            this.LabelVeterinario = new System.Windows.Forms.Label();
+            this.LabelVet = new System.Windows.Forms.Label();
             this.BoxVetID = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.OpcionG = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.OpcionE = new System.Windows.Forms.RadioButton();
             this.OpcionC = new System.Windows.Forms.RadioButton();
-            this.TablaHistorial = new System.Windows.Forms.DataGridView();
+            this.TablaConsulta = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextTPID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextCitaID)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaHistorial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaConsulta)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -87,7 +88,7 @@ namespace Fronts {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.TablaHistorial, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TablaConsulta, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,8 +120,9 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Controls.Add(this.TextTPID, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.LabelHistorial, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.BotonLimpiar, 2, 10);
+            this.tableLayoutPanel3.Controls.Add(this.TextCitaID, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.LabelCita, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 10);
             this.tableLayoutPanel3.Controls.Add(this.LabelAnotaciones, 0, 8);
@@ -131,7 +133,7 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.LabelServicio, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.BoxPacID, 0, 5);
             this.tableLayoutPanel3.Controls.Add(this.LabelPaciente, 0, 4);
-            this.tableLayoutPanel3.Controls.Add(this.LabelVeterinario, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.LabelVet, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.BoxVetID, 2, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 93);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -149,34 +151,48 @@ namespace Fronts {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(431, 354);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
-            // TextTPID
+            // BotonLimpiar
             // 
-            this.TextTPID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.TextTPID, 2);
-            this.TextTPID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextTPID.Location = new System.Drawing.Point(3, 90);
-            this.TextTPID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            this.TextTPID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            this.TextTPID.Name = "TextTPID";
-            this.TextTPID.Size = new System.Drawing.Size(208, 21);
-            this.TextTPID.TabIndex = 47;
-            this.TextTPID.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            this.BotonLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonLimpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonLimpiar.Location = new System.Drawing.Point(217, 293);
+            this.BotonLimpiar.Name = "BotonLimpiar";
+            this.tableLayoutPanel3.SetRowSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.Size = new System.Drawing.Size(211, 58);
+            this.BotonLimpiar.TabIndex = 48;
+            this.BotonLimpiar.Text = "Limpiar";
+            this.BotonLimpiar.UseVisualStyleBackColor = true;
+            this.BotonLimpiar.Click += new System.EventHandler(this.BotonLimpiar_Click);
             // 
-            // LabelHistorial
+            // TextCitaID
             // 
-            this.LabelHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelHistorial, 2);
-            this.LabelHistorial.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelHistorial.Location = new System.Drawing.Point(3, 58);
-            this.LabelHistorial.Name = "LabelHistorial";
-            this.LabelHistorial.Size = new System.Drawing.Size(208, 29);
-            this.LabelHistorial.TabIndex = 46;
-            this.LabelHistorial.Text = "Historial ID";
-            this.LabelHistorial.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.TextCitaID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.TextCitaID, 2);
+            this.TextCitaID.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextCitaID.Location = new System.Drawing.Point(3, 90);
+            this.TextCitaID.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.TextCitaID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.TextCitaID.Name = "TextCitaID";
+            this.TextCitaID.Size = new System.Drawing.Size(208, 21);
+            this.TextCitaID.TabIndex = 47;
+            this.TextCitaID.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // LabelCita
+            // 
+            this.LabelCita.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelCita, 2);
+            this.LabelCita.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCita.Location = new System.Drawing.Point(3, 58);
+            this.LabelCita.Name = "LabelCita";
+            this.LabelCita.Size = new System.Drawing.Size(208, 29);
+            this.LabelCita.TabIndex = 46;
+            this.LabelCita.Text = "Cita ID";
+            this.LabelCita.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // Titulo
             // 
@@ -188,19 +204,19 @@ namespace Fronts {
             this.tableLayoutPanel3.SetRowSpan(this.Titulo, 2);
             this.Titulo.Size = new System.Drawing.Size(425, 58);
             this.Titulo.TabIndex = 1;
-            this.Titulo.Text = "Consulta Historial";
+            this.Titulo.Text = "Buscar Consulta";
             this.Titulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BotonCliente
             // 
             this.BotonCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 4);
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 2);
             this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonCliente.Location = new System.Drawing.Point(3, 293);
             this.BotonCliente.Name = "BotonCliente";
             this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(425, 58);
+            this.BotonCliente.Size = new System.Drawing.Size(208, 58);
             this.BotonCliente.TabIndex = 24;
             this.BotonCliente.Text = "Ok";
             this.BotonCliente.UseVisualStyleBackColor = true;
@@ -300,17 +316,17 @@ namespace Fronts {
             this.LabelPaciente.Text = "Paciente";
             this.LabelPaciente.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // LabelVeterinario
+            // LabelVet
             // 
-            this.LabelVeterinario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.LabelVeterinario, 2);
-            this.LabelVeterinario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelVeterinario.Location = new System.Drawing.Point(217, 58);
-            this.LabelVeterinario.Name = "LabelVeterinario";
-            this.LabelVeterinario.Size = new System.Drawing.Size(211, 29);
-            this.LabelVeterinario.TabIndex = 2;
-            this.LabelVeterinario.Text = "Veterinario";
-            this.LabelVeterinario.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.LabelVet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.LabelVet, 2);
+            this.LabelVet.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelVet.Location = new System.Drawing.Point(217, 58);
+            this.LabelVet.Name = "LabelVet";
+            this.LabelVet.Size = new System.Drawing.Size(211, 29);
+            this.LabelVet.TabIndex = 2;
+            this.LabelVet.Text = "Veterinario";
+            this.LabelVet.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // BoxVetID
             // 
@@ -414,11 +430,11 @@ namespace Fronts {
             this.OpcionC.UseVisualStyleBackColor = true;
             this.OpcionC.CheckedChanged += new System.EventHandler(this.OpcionC_CheckedChanged);
             // 
-            // TablaHistorial
+            // TablaConsulta
             // 
-            this.TablaHistorial.AllowUserToAddRows = false;
-            this.TablaHistorial.AllowUserToDeleteRows = false;
-            this.TablaHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.TablaConsulta.AllowUserToAddRows = false;
+            this.TablaConsulta.AllowUserToDeleteRows = false;
+            this.TablaConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -426,15 +442,15 @@ namespace Fronts {
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TablaHistorial.Location = new System.Drawing.Point(3, 3);
-            this.TablaHistorial.Name = "TablaHistorial";
-            this.TablaHistorial.ReadOnly = true;
-            this.TablaHistorial.Size = new System.Drawing.Size(437, 450);
-            this.TablaHistorial.TabIndex = 0;
-            this.TablaHistorial.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaHistorial_CellClick);
+            this.TablaConsulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.TablaConsulta.Location = new System.Drawing.Point(3, 3);
+            this.TablaConsulta.Name = "TablaConsulta";
+            this.TablaConsulta.ReadOnly = true;
+            this.TablaConsulta.Size = new System.Drawing.Size(437, 450);
+            this.TablaConsulta.TabIndex = 0;
+            this.TablaConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaHistorial_CellClick);
             // 
-            // Historial
+            // Consultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,22 +458,24 @@ namespace Fronts {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Historial";
-            this.Text = "Historial";
+            this.Name = "Consultas";
+            this.Text = "Consultas";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextTPID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextCitaID)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaHistorial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaConsulta)).EndInit();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label LabelHistorial;
+        private System.Windows.Forms.Button BotonLimpiar;
 
-        private System.Windows.Forms.NumericUpDown TextTPID;
+        private System.Windows.Forms.Label LabelCita;
+
+        private System.Windows.Forms.NumericUpDown TextCitaID;
 
         private System.Windows.Forms.Label LabelServicio;
         private System.Windows.Forms.ComboBox BoxServID;
@@ -466,7 +484,7 @@ namespace Fronts {
         private System.Windows.Forms.ComboBox BoxPacID;
         private System.Windows.Forms.Label Titulo;
         private System.Windows.Forms.Label LabelPaciente;
-        private System.Windows.Forms.Label LabelVeterinario;
+        private System.Windows.Forms.Label LabelVet;
         private System.Windows.Forms.ComboBox BoxVetID;
         private System.Windows.Forms.Label LabelMotivo;
         private System.Windows.Forms.TextBox TextMotivo;
@@ -481,7 +499,7 @@ namespace Fronts {
         private System.Windows.Forms.RadioButton OpcionE;
         private System.Windows.Forms.RadioButton OpcionC;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView TablaHistorial;
+        private System.Windows.Forms.DataGridView TablaConsulta;
 
         private System.Windows.Forms.Panel panel2;
 

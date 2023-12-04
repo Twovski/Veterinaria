@@ -17,17 +17,15 @@ namespace Fronts {
             EPaciente = paciente;
             EVeterinario = veterinario;
             
-            BoxPacID.DataSource = _negocio.ListaPaciente();
+            BoxVetID.DataSource = _negocio.ListaVeterinaria(veterinario);
+            BoxVetID.DisplayMember = "Nombre";
+            BoxVetID.ValueMember = "VetID";
+            
+            BoxPacID.DataSource = _negocio.ListaPaciente(paciente);
             if (paciente != null)
                 BoxPacID.SelectedIndex = BoxPacID.FindStringExact(paciente.Nombre);
             BoxPacID.DisplayMember = "Nombre";
             BoxPacID.ValueMember = "PacID";
-
-            BoxVetID.DataSource = _negocio.ListaVeterinaria();
-            if (veterinario != null)
-                BoxVetID.SelectedIndex = BoxVetID.FindStringExact(veterinario.Nombre);
-            BoxVetID.DisplayMember = "Nombre";
-            BoxVetID.ValueMember = "VetID";
 
             BoxServID.DataSource = _negocio.ListaServicio();
             BoxServID.DisplayMember = "Nombre";
@@ -140,15 +138,15 @@ namespace Fronts {
         }
 
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Historial";
+            Titulo.Text = "Consultar";
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Crear Historial";
+            Titulo.Text = "Crear Consulta";
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Editar Historial";
+            Titulo.Text = "Editar Consulta";
         }
 
         private void TablaHistorial_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -195,6 +193,20 @@ namespace Fronts {
                     LabelCheck(new []{ "TPacID", "PacID", "VetID", "ServID", "Anotaciones", "Motivo" });
                 }
             }
+        }
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
+            this.SuspendLayout();
+            // 
+            // Historial
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Historial";
+            this.ResumeLayout(false);
         }
     }
 }

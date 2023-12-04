@@ -5,20 +5,25 @@ using Entidades;
 using Negocio;
 
 namespace Fronts {
-    public partial class LoginVeterinario : Form {
+    public partial class Login : Form {
         private NegocioVeterinario _negocio = new NegocioVeterinario();
-        public EntidadVeterinario EVeterinario = null;
+        public EntidadVeterinario EVeterinario;
         
-        public LoginVeterinario() {
+        public Login() {
             InitializeComponent();
+            BoxVetID.DataSource = _negocio.ListaVeterinario();
+            BoxVetID.DisplayMember = "Nombre";
+            BoxVetID.ValueMember = "VetID";
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
+            LabelCheck(new []{ "VetID", "Contraseña" });
             string query = QueryConsulta();
             EVeterinario = _negocio.Login(query);
-            if(EVeterinario != null)
+            if (EVeterinario != null) 
                 Close();
-            LabelCheck(new []{ "RFC" });
+            else 
+                MessageBox.Show("Contraseña incorrecta", "Login" , MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         
         private void LabelCheck(string[] columns) {
@@ -32,8 +37,8 @@ namespace Fronts {
         }
         
         private string QueryConsulta() {
-            string[] columns = { "RFC" };
-            string query = $"SELECT * FROM VW_Veterinario";
+            string[] columns = { "VetID", "Contraseña" };
+            string query = $"SELECT * FROM Veterinario";
             string condition = " WHERE";
 
             foreach (string column in columns) {
@@ -41,14 +46,19 @@ namespace Fronts {
                 query += condition + $" [{column}] = '{result}'";
                 condition = " AND";
             }
-            
+
+            query += " AND Status = 1";
             return query;
         }
         
         private string GetColumn(string column) {
+            int id;
             switch (column) {
-                case "RFC":
-                    return TextRFC.Text;
+                case "VetID":
+                    id = (int) BoxVetID.SelectedValue;
+                    return id == -1 ? "" : Convert.ToString(id);
+                case "Contraseña":
+                    return TextContraseña.Text;
                 default:
                     return "";
             }
@@ -56,8 +66,10 @@ namespace Fronts {
 
         private Label GetLabel(string column) {
             switch (column) {
-                case "RFC":
-                    return LabelRFC;
+                case "VetID":
+                    return LabelVetID;
+                case "Contraseña":
+                    return LabelContraseña;
                 default:
                     return null;
             }

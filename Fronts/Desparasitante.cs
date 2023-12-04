@@ -4,14 +4,14 @@ using System.Windows.Forms;
 using Negocio;
 
 namespace Fronts {
-    public partial class Vacunas : Form {
+    public partial class Desparasitante : Form {
         private NegocioCitaDetalle _negocioCitaDetalle = new NegocioCitaDetalle();
         private NegocioCita _negocioCita = new NegocioCita();
-        public Vacunas() {
+        public Desparasitante() {
             InitializeComponent();
-            TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Vacuna");
+            TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Desparasitante");
             TablaCitas.DataSource = _negocioCita.GetListado("SELECT * FROM VW_Cita");
-            BoxTraID.DataSource = _negocioCitaDetalle.ListaVacuna();
+            BoxTraID.DataSource = _negocioCitaDetalle.ListaDesparasitante();
             BoxTraID.DisplayMember = "Nombre";
             BoxTraID.ValueMember = "TraID";
         }
@@ -47,7 +47,7 @@ namespace Fronts {
 
         private string QueryConsulta() {
             string[] columns = { "TraID", "CitaID", "Fecha Proximo", "Cantidad" };
-            string query = "SELECT * FROM VW_Vacuna";
+            string query = "SELECT * FROM VW_Desparasitante";
             string condition = " WHERE";
 
             foreach (string column in columns) {
@@ -95,16 +95,15 @@ namespace Fronts {
                     return null;
             }
         }
-
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Buscar Vacuna";
+            Titulo.Text = "Buscar Desparasitante";
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Crear Vacuna";
+            Titulo.Text = "Crear Desparasitante";
         }
 
-        private void TablaHistorial_CellClick(object sender, DataGridViewCellEventArgs e) {
+        private void TablaVacunas_CellClick(object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex == -1)
                 return;
             
@@ -112,17 +111,17 @@ namespace Fronts {
             DataGridViewCellCollection Column = TablaVacunas.Rows[e.RowIndex].Cells;
             string fecha = Column["Fecha Proxima"].Value.ToString().Trim();
             
-            BoxTraID.Text = Column["Vacuna"].Value.ToString().Trim();
+            BoxTraID.Text = Column["Desparasitante"].Value.ToString().Trim();
             TextCantidad.Text = Column["Cantidad"].Value.ToString().Trim();
             TextCita.Text = Column["CitaID"].Value.ToString().Trim();
-            if (!string.IsNullOrWhiteSpace(fecha)) {
-                DateFP.Format = DateTimePickerFormat.Long;
+            
+            if (!string.IsNullOrWhiteSpace(fecha))
                 DateFP.Text = fecha;
-            }
             else {
                 DateFP.Format = DateTimePickerFormat.Custom;
                 DateFP.CustomFormat = " ";
             }
+
         }
 
         private void DateFP_ValueChanged(object sender, EventArgs e) {
@@ -142,10 +141,11 @@ namespace Fronts {
                     string query = QueryGuardar();
                     Console.WriteLine(query);
                     _negocioCitaDetalle.Execute(query);
-                    TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Vacuna");
+                    TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Desparasitante");
+                    BotonLimpiar.PerformClick();
                 }
                 catch (Exception exception) {
-                    Console.WriteLine(exception);
+                    
                 }
             }
         }
@@ -159,6 +159,14 @@ namespace Fronts {
             DataGridViewCellCollection Column = TablaCitas.Rows[e.RowIndex].Cells;
             TextCita.Text = Column["CitaID"].Value.ToString().Trim();
 
+        }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextCita.Text = "";
+            TextCantidad.Value = 0;
+            BoxTraID.Text = "Selecciona";
+            DateFP.Format = DateTimePickerFormat.Custom;
+            DateFP.CustomFormat = " ";
         }
     }
 }

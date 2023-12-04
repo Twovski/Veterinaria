@@ -85,7 +85,7 @@ namespace Fronts {
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(260, 23);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Historial";
+            this.label1.Text = "Consulta";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // BotonDesparasitante
@@ -105,6 +105,7 @@ namespace Fronts {
             this.BotonDesparasitante.Size = new System.Drawing.Size(262, 124);
             this.BotonDesparasitante.TabIndex = 2;
             this.BotonDesparasitante.UseVisualStyleBackColor = false;
+            this.BotonDesparasitante.Click += new System.EventHandler(this.BotonDesparasitante_Click);
             // 
             // BotonVacunas
             // 
@@ -124,6 +125,7 @@ namespace Fronts {
             this.BotonVacunas.Size = new System.Drawing.Size(260, 124);
             this.BotonVacunas.TabIndex = 1;
             this.BotonVacunas.UseVisualStyleBackColor = false;
+            this.BotonVacunas.Click += new System.EventHandler(this.BotonVacunas_Click);
             // 
             // BotonHistorial
             // 

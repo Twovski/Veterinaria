@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 using Datos;
 using Entidades;
@@ -14,8 +15,17 @@ namespace Negocio {
             return _dato.Execute(query);
         }
 
+        public List<EntidadVeterinario> ListaVeterinario() {
+            return _dato.ListaVeterinario();
+        }
+
         public EntidadVeterinario Login(string query) {
             return _dato.Login(query);
         }
+        
+        public int ScopeIdentity() {
+            return _dato.ScopeIdentity();
+        }
+        
     }
 }

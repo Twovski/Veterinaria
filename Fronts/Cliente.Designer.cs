@@ -40,7 +40,6 @@ namespace Fronts {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.TextTelefono = new System.Windows.Forms.MaskedTextBox();
-            this.BotonCliente = new System.Windows.Forms.Button();
             this.Titulo = new System.Windows.Forms.Label();
             this.LabelVetID = new System.Windows.Forms.Label();
             this.LabelCliID = new System.Windows.Forms.Label();
@@ -61,6 +60,8 @@ namespace Fronts {
             this.label7 = new System.Windows.Forms.Label();
             this.TextCelular = new System.Windows.Forms.MaskedTextBox();
             this.TextCliID = new System.Windows.Forms.NumericUpDown();
+            this.BotonCliente = new System.Windows.Forms.Button();
+            this.BotonLimpiar = new System.Windows.Forms.Button();
             this.TablaCliente = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -237,7 +238,6 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.Controls.Add(this.TextTelefono, 2, 11);
-            this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 12);
             this.tableLayoutPanel3.Controls.Add(this.Titulo, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.LabelVetID, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.LabelCliID, 0, 2);
@@ -258,6 +258,8 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.label7, 2, 10);
             this.tableLayoutPanel3.Controls.Add(this.TextCelular, 0, 11);
             this.tableLayoutPanel3.Controls.Add(this.TextCliID, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.BotonCliente, 0, 12);
+            this.tableLayoutPanel3.Controls.Add(this.BotonLimpiar, 2, 12);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 98);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 14;
@@ -290,21 +292,6 @@ namespace Fronts {
             this.TextTelefono.PromptChar = ' ';
             this.TextTelefono.Size = new System.Drawing.Size(217, 21);
             this.TextTelefono.TabIndex = 39;
-            // 
-            // BotonCliente
-            // 
-            this.BotonCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 4);
-            this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonCliente.Location = new System.Drawing.Point(3, 315);
-            this.BotonCliente.Name = "BotonCliente";
-            this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(437, 56);
-            this.BotonCliente.TabIndex = 24;
-            this.BotonCliente.Text = "Ok";
-            this.BotonCliente.UseVisualStyleBackColor = true;
-            this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
             // 
             // Titulo
             // 
@@ -537,6 +524,36 @@ namespace Fronts {
             this.TextCliID.TabIndex = 40;
             this.TextCliID.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // BotonCliente
+            // 
+            this.BotonCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 2);
+            this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonCliente.Location = new System.Drawing.Point(3, 315);
+            this.BotonCliente.Name = "BotonCliente";
+            this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
+            this.BotonCliente.Size = new System.Drawing.Size(214, 56);
+            this.BotonCliente.TabIndex = 24;
+            this.BotonCliente.Text = "Ok";
+            this.BotonCliente.UseVisualStyleBackColor = true;
+            this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
+            // 
+            // BotonLimpiar
+            // 
+            this.BotonLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonLimpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonLimpiar.Location = new System.Drawing.Point(223, 315);
+            this.BotonLimpiar.Name = "BotonLimpiar";
+            this.tableLayoutPanel3.SetRowSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.Size = new System.Drawing.Size(217, 56);
+            this.BotonLimpiar.TabIndex = 41;
+            this.BotonLimpiar.Text = "Limpiar";
+            this.BotonLimpiar.UseVisualStyleBackColor = true;
+            this.BotonLimpiar.Click += new System.EventHandler(this.BotonLimpiar_Click);
+            // 
             // TablaCliente
             // 
             this.TablaCliente.AllowUserToAddRows = false;
@@ -579,6 +596,8 @@ namespace Fronts {
             ((System.ComponentModel.ISupportInitialize)(this.TablaCliente)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button BotonLimpiar;
 
         private System.Windows.Forms.NumericUpDown TextCliID;
 

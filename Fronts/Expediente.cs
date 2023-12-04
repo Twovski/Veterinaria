@@ -12,13 +12,13 @@ namespace Fronts {
         }
 
         private void BotonHistorial_Click(object sender, EventArgs e) {
-            Historial historial = new Historial(_veterinario, _paciente);
+            Consultas historial = new Consultas(_veterinario, _paciente);
             historial.ShowDialog();
         }
 
 
         private void OpcionLogin_Click(object sender, EventArgs e) {
-            LoginVeterinario login = new LoginVeterinario();
+            Login login = new Login();
             login.ShowDialog();
             if (login.EVeterinario == null) 
                 return;
@@ -35,6 +35,14 @@ namespace Fronts {
             if (paciente.EPaciente == null) 
                 return;
             _paciente = paciente.EPaciente;
+        }
+
+        private void BotonVacunas_Click(object sender, EventArgs e) {
+            new Vacunas().ShowDialog();
+        }
+
+        private void BotonDesparasitante_Click(object sender, EventArgs e) {
+            new Desparasitante().ShowDialog();
         }
     }
 }

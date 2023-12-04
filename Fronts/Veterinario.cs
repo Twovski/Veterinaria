@@ -21,11 +21,12 @@ namespace Fronts {
             }
             
             if (OpcionG.Checked) {
+                LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
                 try {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
-                    LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
+                    MessageBox.Show("Guardado Exitosamente");
                 }
                 catch (Exception exception) {
                     LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
@@ -184,6 +185,8 @@ namespace Fronts {
             TablaVeterinario.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaVeterinario.Rows[e.RowIndex].Cells;
             TextVetID.Text = Column["VetID"].Value.ToString().Trim();
+            TextAP.Text = Column["Apellido Paterno"].Value.ToString().Trim();
+            TextAM.Text = Column["Apellido Materno"].Value.ToString().Trim();
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
             TextRFC.Text = Column["RFC"].Value.ToString().Trim();
             TextCorreo.Text = Column["Correo"].Value.ToString().Trim();

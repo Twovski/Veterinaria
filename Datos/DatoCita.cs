@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using Entidades;
 
 namespace Datos {
-    public class DatoDetalle {
+    public class DatoCita {
         public DataTable GetListado(string query) {
             DataTable table = new DataTable();
             SqlCommand command = new SqlCommand(query, SQL.Connection);
@@ -17,11 +17,8 @@ namespace Datos {
             return table;
         }
         
-        public List<EntidadPaciente> ListaPaciente() {
+        public List<EntidadPaciente> ListaPaciente(EntidadPaciente paciente) {
             List<EntidadPaciente> list = new List<EntidadPaciente>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Paciente", SQL.Connection);
-            SqlDataReader reader = command.ExecuteReader();
-            
             list.Add(new EntidadPaciente() {
                 PacID = -1,
                 Nombre = "Selecciona",
@@ -33,6 +30,18 @@ namespace Datos {
                 TipoID = -1,
                 CliID =-1
             });
+            
+            string query;
+            if (paciente == null) 
+                query = "SELECT * FROM Paciente WHERE Status = 1";
+            else {
+                list.Add(paciente);
+                query = $"SELECT * FROM Paciente WHERE PacID != {paciente.PacID} AND Status = 1";
+            }
+            
+            SqlCommand command = new SqlCommand(query, SQL.Connection);
+            SqlDataReader reader = command.ExecuteReader();
+            
             while (reader.Read()) 
                 list.Add(new EntidadPaciente() {
                     PacID = reader.GetInt32(0),
@@ -49,9 +58,9 @@ namespace Datos {
             return list;
         }
         
-        public List<EntidadVeterinario> ListaVeterinario() {
+        public List<EntidadVeterinario> ListaVeterinario(EntidadVeterinario veterinario) {
             List<EntidadVeterinario> list = new List<EntidadVeterinario>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Veterinario WHERE Status = 1", SQL.Connection);
+            SqlCommand command = new SqlCommand($"SELECT * FROM Veterinario WHERE Status = 1 AND VetID != {veterinario.VetID}", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadVeterinario() {
@@ -63,6 +72,7 @@ namespace Datos {
                 Correo = null,
                 Status = false
             });
+            list.Add(veterinario);
             while (reader.Read()) {
                 list.Add(new EntidadVeterinario() {
                     VetID = reader.GetInt32(0),
@@ -77,13 +87,12 @@ namespace Datos {
             
             return list;
         }
-
         
         public List<EntidadServicio> ListaServicio() {
             List<EntidadServicio> list = new List<EntidadServicio>();
             SqlCommand command = new SqlCommand("SELECT * FROM Servicio", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
-
+            
             list.Add(new EntidadServicio() {
                 ServID = -1,
                 Nombre = "Selecciona",
@@ -100,32 +109,14 @@ namespace Datos {
             return list;
         }
         
-        public List<EntidadTratamiento> ListaTratamiento() {
-            List<EntidadTratamiento> list = new List<EntidadTratamiento>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tratamiento", SQL.Connection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            list.Add(new EntidadTratamiento() {
-                TipoID = -1,
-                Nombre = "Selecciona",
-                Status = false,
-                TraID = -1
-            });
-            while (reader.Read()) {
-                list.Add(new EntidadTratamiento() {
-                    TipoID = reader.GetInt32(0),
-                    Nombre = reader.GetString(1),
-                    Status = reader.GetBoolean(2),
-                    TraID = reader.GetInt32(3)
-                });
-            }
-            
-            return list;
-        }
-        
         public int Execute(string query) {
             SqlCommand command = new SqlCommand(query, SQL.Connection);
             return command.ExecuteNonQuery();
+        }
+        
+        public int ScopeIdentity() {
+            SqlCommand command = new SqlCommand("SELECT SCOPE_IDENTITY()", SQL.Connection);
+            return Convert.ToInt32(command.ExecuteScalar());
         }
     }
 }

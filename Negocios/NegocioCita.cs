@@ -4,23 +4,19 @@ using Datos;
 using Entidades;
 
 namespace Negocio {
-    public class NegocioDetalles {
-        private DatoDetalle _dato = new DatoDetalle();
+    public class NegocioCita {
+        private DatoCita _dato = new DatoCita();
         
         public DataTable GetListado(string query) {
             return _dato.GetListado(query);
         }
 
-        public List<EntidadVeterinario> ListaVeterinaria() {
-            return _dato.ListaVeterinario();
+        public List<EntidadVeterinario> ListaVeterinaria(EntidadVeterinario veterinario) {
+            return _dato.ListaVeterinario(veterinario);
         }
         
-        public List<EntidadPaciente> ListaPaciente() {
-            return _dato.ListaPaciente();
-        }
-        
-        public List<EntidadTratamiento> ListaTratamiento() {
-            return _dato.ListaTratamiento();
+        public List<EntidadPaciente> ListaPaciente(EntidadPaciente paciente) {
+            return _dato.ListaPaciente(paciente);
         }
 
         public List<EntidadServicio> ListaServicio() {
@@ -30,5 +26,10 @@ namespace Negocio {
         public int Execute(string query) {
             return _dato.Execute(query);
         }
+        
+        public int ScopeIdentity() {
+            return _dato.ScopeIdentity();
+        }
+        
     }
 }

@@ -39,8 +39,9 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="NegocioCitaDetalle.cs" />
         <Compile Include="NegocioCliente.cs" />
-        <Compile Include="NegocioDetalles.cs" />
+        <Compile Include="NegocioCita.cs" />
         <Compile Include="NegocioMenu.cs" />
         <Compile Include="NegocioPaciente.cs" />
         <Compile Include="NegocioServicio.cs" />

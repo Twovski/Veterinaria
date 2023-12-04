@@ -469,12 +469,14 @@ namespace Fronts {
             this.DateFN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.DateFN.CalendarFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel3.SetColumnSpan(this.DateFN, 3);
-            this.DateFN.CustomFormat = "mm/dd/yyyy";
+            this.DateFN.CustomFormat = " ";
             this.DateFN.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateFN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateFN.Location = new System.Drawing.Point(3, 228);
             this.DateFN.Name = "DateFN";
             this.DateFN.Size = new System.Drawing.Size(285, 21);
             this.DateFN.TabIndex = 43;
+            this.DateFN.ValueChanged += new System.EventHandler(this.DateFN_ValueChanged_1);
             // 
             // TextEdad
             // 
@@ -491,6 +493,7 @@ namespace Fronts {
             // 
             this.TablaPaciente.AllowUserToAddRows = false;
             this.TablaPaciente.AllowUserToDeleteRows = false;
+            this.TablaPaciente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

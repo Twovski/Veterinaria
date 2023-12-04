@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Negocio;
 
 namespace Fronts {
-    public partial class Cliente : Form {
+     public partial class Cliente : Form {
         private NegocioCliente _negocio = new NegocioCliente();
         
         public Cliente() {
@@ -25,37 +25,43 @@ namespace Fronts {
             
             if (OpcionG.Checked) {
                 try {
+                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Crear Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    
                 }
             }
             
             if (OpcionE.Checked) {
                 try {
+                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
+                    MessageBox.Show("Editado Exitosamente", "Editar Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
+                    
                 }
             }
             
             if (OpcionB.Checked) {
                 try {
+                    LabelCheck(new []{ "CliID" });
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
-                    LabelCheck(new []{ "CliID" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Eliminado Exitosamente", "Eliminar Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "CliID" });
+                    
                 }
             }
         }
@@ -174,19 +180,59 @@ namespace Fronts {
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Clientes";
+            Titulo.Text = "Buscar Clientes";
+            TextCliID.ReadOnly = true;
+            BoxVetID.Enabled = true;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextIFE.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextDireccion.ReadOnly = false;
+            TextTelefono.ReadOnly = false;
+            TextCelular.ReadOnly = false;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Clientes";
+            TextCliID.ReadOnly = true;
+            BoxVetID.Enabled = true;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextIFE.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextDireccion.ReadOnly = false;
+            TextTelefono.ReadOnly = false;
+            TextCelular.ReadOnly = false;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Clientes";
+            TextCliID.ReadOnly = true;
+            BoxVetID.Enabled = false;
+            TextNombre.ReadOnly = true;
+            TextAP.ReadOnly = true;
+            TextAM.ReadOnly = true;
+            TextIFE.ReadOnly = true;
+            TextCorreo.ReadOnly = true;
+            TextDireccion.ReadOnly = true;
+            TextTelefono.ReadOnly = true;
+            TextCelular.ReadOnly = true;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Clientes";
+            TextCliID.ReadOnly = false;
+            BoxVetID.Enabled = true;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextIFE.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextDireccion.ReadOnly = false;
+            TextTelefono.ReadOnly = false;
+            TextCelular.ReadOnly = false;
         }
 
         private void TablaCliente_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -206,5 +252,18 @@ namespace Fronts {
             TextTelefono.Text = Column["Telefono"].Value.ToString();
             BoxVetID.Text = Column["Veterinaria"].Value.ToString();
         }
-    }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextCliID.Text = "";
+            BoxVetID.Text = "Selecciona";
+            TextNombre.Clear();
+            TextAP.Clear();
+            TextAM.Clear();
+            TextIFE.Clear();
+            TextCorreo.Clear();
+            TextDireccion.Clear();
+            TextTelefono.Clear();
+            TextCelular.Clear();
+        }
+     }
 }

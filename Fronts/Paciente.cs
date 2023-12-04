@@ -137,6 +137,9 @@ namespace Fronts {
                 case "Color":
                     return TextColor.Text;
                 case "Fecha Nacimiento":
+                    if (string.IsNullOrWhiteSpace(DateFN.Text))
+                        return "";
+                    
                     DateTime fecha = DateFN.Value;
                     return fecha.ToString("MM/dd/yyyy");
                 case "Edad":
@@ -190,7 +193,7 @@ namespace Fronts {
             TablaPaciente.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaPaciente.Rows[e.RowIndex].Cells;
             string pacID = Column["PacID"].Value.ToString().Trim();
-            
+            string fecha = Column["Fecha Nacimiento"].Value.ToString().Trim();
             if (Consulta) {
                 string query = $"SELECT * FROM VW_Paciente WHERE PacID = {pacID}";
                 EPaciente = _negocio.GetPaciente(query);
@@ -203,7 +206,14 @@ namespace Fronts {
             BoxSexo.Text = GetSexo((bool) Column["Sexo"].Value);
             TextColor.Text = Column["Color"].Value.ToString().Trim();
             BoxCliID.Text = Column["Cliente"].Value.ToString().Trim();
-            DateFN.Value = DateTime.Parse(Column["Fecha Nacimiento"].Value.ToString().Trim());
+            if (!string.IsNullOrWhiteSpace(fecha)) {
+                DateFN.Format = DateTimePickerFormat.Long;
+                DateFN.Value = DateTime.Parse(fecha);
+            }
+            else {
+                DateFN.Format = DateTimePickerFormat.Custom;
+                DateFN.CustomFormat = " ";
+            }
             TextEdad.Text = Column["Edad"].Value.ToString().Trim();
         }
 
@@ -214,45 +224,48 @@ namespace Fronts {
         private void BotonCliente_Click(object sender, EventArgs e) {
             if (OpcionC.Checked) {
                 string query = QueryConsulta();
+                Console.WriteLine(query);
                 TablaPaciente.DataSource = _negocio.GetListado(query);
             }
             
             if (OpcionG.Checked) {
+                LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 try {
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
-                    LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
+                    
                 }
             }
             
             if (OpcionE.Checked) {
+                LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 try {
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                     
                 }
             }
             
             if (OpcionB.Checked) {
+                LabelCheck(new []{ "PacID" });
                 try {
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
-                    LabelCheck(new []{ "PacID" });
                 }
                 catch (Exception exception) {
-                    LabelCheck(new []{ "PacID" });
+                    
                 }
             }
+        }
+        private void DateFN_ValueChanged_1(object sender, EventArgs e) {
+            DateFN.Format = DateTimePickerFormat.Long;
         }
     }
 }

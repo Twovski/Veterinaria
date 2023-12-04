@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -15,6 +16,11 @@ namespace Datos {
         public int Execute(string query) {
             SqlCommand command = new SqlCommand(query, SQL.Connection);
             return command.ExecuteNonQuery();
+        }
+        
+        public int ScopeIdentity() {
+            SqlCommand command = new SqlCommand("SELECT SCOPE_IDENTITY()", SQL.Connection);
+            return Convert.ToInt32(command.ExecuteScalar());
         }
     }
 }

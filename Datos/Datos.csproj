@@ -39,8 +39,9 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="DatoCitaDetalle.cs" />
         <Compile Include="DatoCliente.cs" />
-        <Compile Include="DatoDetalle.cs" />
+        <Compile Include="DatoCita.cs" />
         <Compile Include="DatoPaciente.cs" />
         <Compile Include="DatoServicio.cs" />
         <Compile Include="DatoTratamiento.cs" />
