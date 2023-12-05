@@ -203,7 +203,7 @@ namespace Fronts {
             this.DateFP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.DateFP.CalendarFont = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel3.SetColumnSpan(this.DateFP, 3);
-            this.DateFP.CustomFormat = " ";
+            this.DateFP.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.DateFP.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateFP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateFP.Location = new System.Drawing.Point(3, 262);

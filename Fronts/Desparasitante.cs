@@ -115,18 +115,16 @@ namespace Fronts {
             BoxTraID.Text = Column["Desparasitante"].Value.ToString().Trim();
             TextCantidad.Text = Column["Cantidad"].Value.ToString().Trim();
             TextCita.Text = Column["CitaID"].Value.ToString().Trim();
-            
-            if (!string.IsNullOrWhiteSpace(fecha))
-                DateFP.Text = fecha;
+
+            if (!string.IsNullOrWhiteSpace(fecha)) {
+                DateFP.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+                DateFP.Text = DateTime.Parse(fecha).ToString("MM/dd/yyyy hh:mm:ss");
+            }
             else {
                 DateFP.Format = DateTimePickerFormat.Custom;
                 DateFP.CustomFormat = " ";
             }
 
-        }
-
-        private void DateFP_ValueChanged(object sender, EventArgs e) {
-            DateFP.Format = DateTimePickerFormat.Long;
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
@@ -142,6 +140,8 @@ namespace Fronts {
                     _negocioCitaDetalle.Execute(query);
                     TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Desparasitante");
                     BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Crear Tratamiento Desparasitante" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 catch (SqlException exception) {
                     if (exception.Number == 2627) 
@@ -168,6 +168,9 @@ namespace Fronts {
             TablaCitas.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaCitas.Rows[e.RowIndex].Cells;
             TextCita.Text = Column["CitaID"].Value.ToString().Trim();
+            TextCantidad.Value = 1;
+            BoxTraID.Text = "Selecciona";
+            DateFP.CustomFormat = " ";
         }
 
         private void BotonLimpiar_Click(object sender, EventArgs e) {
@@ -177,5 +180,11 @@ namespace Fronts {
             DateFP.Format = DateTimePickerFormat.Custom;
             DateFP.CustomFormat = " ";
         }
+
+        private void DateFP_ValueChanged(object sender, EventArgs e) {
+            DateFP.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+        }
+        
+        
     }
 }
