@@ -72,6 +72,12 @@
         <Compile Include="Login.Designer.cs">
           <DependentUpon>Login.cs</DependentUpon>
         </Compile>
+        <Compile Include="LoginVeterinaria.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="LoginVeterinaria.Designer.cs">
+          <DependentUpon>LoginVeterinaria.cs</DependentUpon>
+        </Compile>
         <Compile Include="Menu.cs" />
         <Compile Include="Menu.Designer.cs" />
         <Compile Include="Paciente.cs">
@@ -118,6 +124,9 @@
         </EmbeddedResource>
         <EmbeddedResource Include="Login.resx">
           <DependentUpon>Login.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="LoginVeterinaria.resx">
+          <DependentUpon>LoginVeterinaria.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Menu.resx" />
         <EmbeddedResource Include="Paciente.resx">

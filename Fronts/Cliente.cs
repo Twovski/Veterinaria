@@ -2,19 +2,21 @@ using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using Entidades;
 using Negocio;
 
 namespace Fronts {
      public partial class Cliente : Form {
         private NegocioCliente _negocio = new NegocioCliente();
         
-        public Cliente() {
+        public Cliente(EntidadVeterinaria veterinaria) {
             InitializeComponent();
             TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
             TextCliID.Controls[0].Visible = false;
             BoxVetID.DataSource = _negocio.ListaVeterinaria();
             BoxVetID.DisplayMember = "Nombre";
             BoxVetID.ValueMember = "VetID";
+            BoxVetID.Text = veterinaria.Nombre;
             TextCliID.Text = "";
         }
 
