@@ -29,7 +29,8 @@ namespace Fronts {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Consultas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.CPaciente = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,6 +55,7 @@ namespace Fronts {
             this.OpcionE = new System.Windows.Forms.RadioButton();
             this.OpcionC = new System.Windows.Forms.RadioButton();
             this.TablaConsulta = new System.Windows.Forms.DataGridView();
+            this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -72,14 +74,24 @@ namespace Fronts {
             this.panel1.Size = new System.Drawing.Size(886, 30);
             this.panel1.TabIndex = 4;
             // 
-            // panel2
+            // menuStrip1
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(886, 30);
-            this.panel2.TabIndex = 5;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.CPaciente });
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(886, 29);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // CPaciente
+            // 
+            this.CPaciente.Image = ((System.Drawing.Image)(resources.GetObject("CPaciente.Image")));
+            this.CPaciente.Name = "CPaciente";
+            this.CPaciente.Size = new System.Drawing.Size(187, 25);
+            this.CPaciente.Text = "Consultar Paciente";
+            this.CPaciente.Click += new System.EventHandler(this.CPaciente_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -90,12 +102,12 @@ namespace Fronts {
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TablaConsulta, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(886, 456);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(886, 457);
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // tableLayoutPanel2
             // 
@@ -109,7 +121,7 @@ namespace Fronts {
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(437, 450);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(437, 451);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -151,7 +163,7 @@ namespace Fronts {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333334F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(431, 354);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(431, 355);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // BotonLimpiar
@@ -163,7 +175,7 @@ namespace Fronts {
             this.BotonLimpiar.Location = new System.Drawing.Point(217, 293);
             this.BotonLimpiar.Name = "BotonLimpiar";
             this.tableLayoutPanel3.SetRowSpan(this.BotonLimpiar, 2);
-            this.BotonLimpiar.Size = new System.Drawing.Size(211, 58);
+            this.BotonLimpiar.Size = new System.Drawing.Size(211, 59);
             this.BotonLimpiar.TabIndex = 48;
             this.BotonLimpiar.Text = "Limpiar";
             this.BotonLimpiar.UseVisualStyleBackColor = true;
@@ -216,11 +228,11 @@ namespace Fronts {
             this.BotonCliente.Location = new System.Drawing.Point(3, 293);
             this.BotonCliente.Name = "BotonCliente";
             this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(208, 58);
+            this.BotonCliente.Size = new System.Drawing.Size(208, 59);
             this.BotonCliente.TabIndex = 24;
             this.BotonCliente.Text = "Ok";
             this.BotonCliente.UseVisualStyleBackColor = true;
-            this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click_1);
+            this.BotonCliente.Click += new System.EventHandler(this.BotonCliente_Click);
             // 
             // LabelAnotaciones
             // 
@@ -446,9 +458,9 @@ namespace Fronts {
             this.TablaConsulta.Location = new System.Drawing.Point(3, 3);
             this.TablaConsulta.Name = "TablaConsulta";
             this.TablaConsulta.ReadOnly = true;
-            this.TablaConsulta.Size = new System.Drawing.Size(437, 450);
+            this.TablaConsulta.Size = new System.Drawing.Size(437, 451);
             this.TablaConsulta.TabIndex = 0;
-            this.TablaConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaHistorial_CellClick);
+            this.TablaConsulta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaConsulta_CellClick);
             // 
             // Consultas
             // 
@@ -456,10 +468,12 @@ namespace Fronts {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 516);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.Name = "Consultas";
             this.Text = "Consultas";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -469,7 +483,11 @@ namespace Fronts {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaConsulta)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem CPaciente;
 
         private System.Windows.Forms.Button BotonLimpiar;
 
@@ -500,8 +518,6 @@ namespace Fronts {
         private System.Windows.Forms.RadioButton OpcionC;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView TablaConsulta;
-
-        private System.Windows.Forms.Panel panel2;
 
         private System.Windows.Forms.Panel panel1;
 

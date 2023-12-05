@@ -35,11 +35,11 @@ namespace Fronts {
             this.BotonVacunas = new System.Windows.Forms.Button();
             this.BotonHistorial = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.OpcionLogin = new System.Windows.Forms.ToolStripMenuItem();
-            this.CPaciente = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionCC = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.miniToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -73,7 +73,7 @@ namespace Fronts {
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(260, 23);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Vacunas";
+            this.label2.Text = "Vacuna";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label1
@@ -172,16 +172,16 @@ namespace Fronts {
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 391);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // menuStrip1
+            // miniToolStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpcionLogin, this.CPaciente });
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 29);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
+            this.miniToolStrip.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.miniToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.OpcionLogin, this.OpcionCC });
+            this.miniToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.Size = new System.Drawing.Size(800, 29);
+            this.miniToolStrip.TabIndex = 6;
             // 
             // OpcionLogin
             // 
@@ -190,35 +190,36 @@ namespace Fronts {
             this.OpcionLogin.Text = "Login";
             this.OpcionLogin.Click += new System.EventHandler(this.OpcionLogin_Click);
             // 
-            // CPaciente
+            // OpcionCC
             // 
-            this.CPaciente.Name = "CPaciente";
-            this.CPaciente.Size = new System.Drawing.Size(171, 25);
-            this.CPaciente.Text = "Consultar Paciente";
-            this.CPaciente.Click += new System.EventHandler(this.CPaciente_Click);
+            this.OpcionCC.Enabled = false;
+            this.OpcionCC.Name = "OpcionCC";
+            this.OpcionCC.Size = new System.Drawing.Size(188, 25);
+            this.OpcionCC.Text = "Cambiar Contraseña";
+            this.OpcionCC.Click += new System.EventHandler(this.OpcionCC_Click);
             // 
             // Expediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.miniToolStrip);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "Expediente";
-            this.Text = "Expediente";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.miniToolStrip.ResumeLayout(false);
+            this.miniToolStrip.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
         }
 
-        private System.Windows.Forms.ToolStripMenuItem OpcionLogin;
-        private System.Windows.Forms.ToolStripMenuItem CPaciente;
+        private System.Windows.Forms.ToolStripMenuItem OpcionCC;
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem OpcionLogin;
+
+        private System.Windows.Forms.MenuStrip miniToolStrip;
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button BotonHistorial;

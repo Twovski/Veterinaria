@@ -33,5 +33,10 @@ namespace Fronts {
         private void OpcionTratamiento_Click(object sender, EventArgs e) {
             new Tratamiento().ShowDialog();
         }
+
+
+        private void OpcionInfo_Click(object sender, EventArgs e) {
+            MessageBox.Show(@"Creadores");
+        }
     }
 }

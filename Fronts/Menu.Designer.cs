@@ -31,7 +31,7 @@
             this.OpcionVeterinario = new System.Windows.Forms.ToolStripMenuItem();
             this.OpcionTratamiento = new System.Windows.Forms.ToolStripMenuItem();
             this.OpcionServicio = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpcionInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BotonCliente = new System.Windows.Forms.Button();
             this.BotonPaciente = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(165)))), ((int)(((byte)(255)))));
             this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.opcionesToolStripMenuItem, this.ayudaToolStripMenuItem });
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.opcionesToolStripMenuItem, this.OpcionInfo });
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 29);
@@ -91,11 +91,12 @@
             this.OpcionServicio.Text = "Servicios";
             this.OpcionServicio.Click += new System.EventHandler(this.OpcionServicio_Click);
             // 
-            // ayudaToolStripMenuItem
+            // OpcionInfo
             // 
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.OpcionInfo.Name = "OpcionInfo";
+            this.OpcionInfo.Size = new System.Drawing.Size(116, 25);
+            this.OpcionInfo.Text = "Infromacion";
+            this.OpcionInfo.Click += new System.EventHandler(this.OpcionInfo_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -249,7 +250,7 @@
         private System.Windows.Forms.ToolStripMenuItem OpcionVeterinario;
         private System.Windows.Forms.ToolStripMenuItem OpcionTratamiento;
         private System.Windows.Forms.ToolStripMenuItem OpcionServicio;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpcionInfo;
 
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
 

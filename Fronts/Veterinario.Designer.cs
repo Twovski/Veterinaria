@@ -39,6 +39,7 @@ namespace Fronts {
             this.OpcionC = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.BotonLimpiar = new System.Windows.Forms.Button();
             this.TextAM = new System.Windows.Forms.TextBox();
             this.LabelAM = new System.Windows.Forms.Label();
             this.TextAP = new System.Windows.Forms.TextBox();
@@ -229,6 +230,7 @@ namespace Fronts {
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Controls.Add(this.BotonLimpiar, 2, 10);
             this.tableLayoutPanel3.Controls.Add(this.TextAM, 2, 5);
             this.tableLayoutPanel3.Controls.Add(this.LabelAM, 2, 4);
             this.tableLayoutPanel3.Controls.Add(this.TextAP, 0, 5);
@@ -261,6 +263,21 @@ namespace Fronts {
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(388, 302);
             this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // BotonLimpiar
+            // 
+            this.BotonLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonLimpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonLimpiar.Location = new System.Drawing.Point(197, 253);
+            this.BotonLimpiar.Name = "BotonLimpiar";
+            this.tableLayoutPanel3.SetRowSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.Size = new System.Drawing.Size(188, 46);
+            this.BotonLimpiar.TabIndex = 47;
+            this.BotonLimpiar.Text = "Limpiar";
+            this.BotonLimpiar.UseVisualStyleBackColor = true;
+            this.BotonLimpiar.Click += new System.EventHandler(this.BotonLimpiar_Click);
             // 
             // TextAM
             // 
@@ -369,13 +386,13 @@ namespace Fronts {
             // BotonCliente
             // 
             this.BotonCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 4);
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 2);
             this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonCliente.Location = new System.Drawing.Point(3, 253);
             this.BotonCliente.Name = "BotonCliente";
             this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(382, 46);
+            this.BotonCliente.Size = new System.Drawing.Size(188, 46);
             this.BotonCliente.TabIndex = 24;
             this.BotonCliente.Text = "Ok";
             this.BotonCliente.UseVisualStyleBackColor = true;
@@ -465,6 +482,8 @@ namespace Fronts {
             ((System.ComponentModel.ISupportInitialize)(this.TablaVeterinario)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button BotonLimpiar;
 
         private System.Windows.Forms.Label LabelAP;
 

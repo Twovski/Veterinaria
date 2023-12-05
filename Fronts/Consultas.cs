@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Entidades;
@@ -9,12 +10,10 @@ namespace Fronts {
     public partial class Consultas : Form {
         private NegocioCita _negocio = new NegocioCita();
         public EntidadVeterinario EVeterinario { get; set; }
-        public EntidadPaciente EPaciente { get; set; }
         
-        public Consultas(EntidadVeterinario veterinario, EntidadPaciente paciente) {
+        public Consultas(EntidadVeterinario veterinario) {
             InitializeComponent();
             TablaConsulta.DataSource = _negocio.GetListado("SELECT * FROM VW_Cita");
-            EPaciente = paciente;
             EVeterinario = veterinario;
             
             BoxVetID.DataSource = _negocio.ListaVeterinaria(veterinario);
@@ -22,9 +21,7 @@ namespace Fronts {
             BoxVetID.ValueMember = "VetID";
             BoxVetID.Text = veterinario.Nombre;
             
-            BoxPacID.DataSource = _negocio.ListaPaciente(paciente);
-            if (paciente != null)
-                BoxPacID.Text = paciente.Nombre;
+            BoxPacID.DataSource = _negocio.ListaPaciente();
             BoxPacID.DisplayMember = "Nombre";
             BoxPacID.ValueMember = "PacID";
 
@@ -137,6 +134,58 @@ namespace Fronts {
                     return null;
             }
         }
+        
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextCitaID.Text = "";
+            BoxVetID.Text = "Selecciona";
+            BoxPacID.Text = "Selecciona";
+            BoxServID.Text = "Selecciona";
+            TextMotivo.Clear();
+            TextAnotaciones.Clear();
+        }
+
+        private void CPaciente_Click(object sender, EventArgs e) {
+            Paciente paciente = new Paciente(true);
+            paciente.ShowDialog();
+            if (paciente.EPaciente == null) 
+                return;
+            BoxPacID.Text = paciente.EPaciente.Nombre;
+            paciente.Close();
+        }
+
+        private void BotonCliente_Click(object sender, EventArgs e) {
+            if (OpcionC.Checked) {
+                string query = QueryConsulta();
+                TablaConsulta.DataSource = _negocio.GetListado(query);
+            }
+            
+            if (OpcionG.Checked) {
+                try {
+                    LabelCheck(new []{ "PacID", "VetID", "ServID", "Anotaciones", "Motivo" });
+                    string query = QueryGuardar();
+                    _negocio.Execute(query);
+                    TablaConsulta.DataSource = _negocio.GetListado("SELECT * FROM VW_Cita");
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Crear Consulta" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
+                }
+            }
+            
+            if (OpcionE.Checked) {
+                try {
+                    LabelCheck(new []{ "CitaID", "Anotaciones", "Motivo" });
+                    string query = QueryEditar();
+                    _negocio.Execute(query);
+                    TablaConsulta.DataSource = _negocio.GetListado("SELECT * FROM VW_Cita");
+                    MessageBox.Show("Editado Exitosamente", "Editar Consulta" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
+                }
+            }
+        }
 
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Buscar Consulta";
@@ -162,7 +211,7 @@ namespace Fronts {
             BoxServID.Enabled = false;
         }
 
-        private void TablaHistorial_CellClick(object sender, DataGridViewCellEventArgs e) {
+        private void TablaConsulta_CellClick(object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex == -1)
                 return;
             
@@ -174,49 +223,6 @@ namespace Fronts {
             BoxServID.Text = Column["Servicio"].Value.ToString().Trim();
             TextAnotaciones.Text = Column["Anotaciones"].Value.ToString().Trim();
             TextMotivo.Text = Column["Motivo"].Value.ToString().Trim();
-        }
-
-        private void BotonCliente_Click_1(object sender, EventArgs e) {
-            if (OpcionC.Checked) {
-                string query = QueryConsulta();
-                TablaConsulta.DataSource = _negocio.GetListado(query);
-            }
-            
-            if (OpcionG.Checked) {
-                try {
-                    LabelCheck(new []{ "PacID", "VetID", "ServID", "Anotaciones", "Motivo" });
-                    string query = QueryGuardar();
-                    _negocio.Execute(query);
-                    TablaConsulta.DataSource = _negocio.GetListado("SELECT * FROM VW_Cita");
-                    BotonLimpiar.PerformClick();
-                    MessageBox.Show("Guardado Exitosamente", "Crear Consulta" , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception exception) {
-                    
-                }
-            }
-            
-            if (OpcionE.Checked) {
-                try {
-                    LabelCheck(new []{ "CitaID", "Anotaciones", "Motivo" });
-                    string query = QueryEditar();
-                    _negocio.Execute(query);
-                    TablaConsulta.DataSource = _negocio.GetListado("SELECT * FROM VW_Cita");
-                    MessageBox.Show("Editado Exitosamente", "Editar Consulta" , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception exception) {
-                    
-                }
-            }
-        }
-
-        private void BotonLimpiar_Click(object sender, EventArgs e) {
-            TextCitaID.Text = "";
-            BoxVetID.Text = "Selecciona";
-            BoxPacID.Text = "Selecciona";
-            BoxServID.Text = "Selecciona";
-            TextMotivo.Clear();
-            TextAnotaciones.Clear();
         }
     }
 }

@@ -240,9 +240,11 @@ namespace Fronts {
             this.TextCantidad.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCantidad.Location = new System.Drawing.Point(3, 153);
             this.TextCantidad.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.TextCantidad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.TextCantidad.Name = "TextCantidad";
             this.TextCantidad.Size = new System.Drawing.Size(188, 21);
             this.TextCantidad.TabIndex = 52;
+            this.TextCantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // TextCita
             // 

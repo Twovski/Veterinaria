@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Entidades;
@@ -71,14 +72,23 @@ namespace Fronts {
         }
         
         private string QueryEditar() {
-            string[] columns = { "CliID", "TipoID", "Sexo", "Nombre", "Color", "Fecha Nacimiento", "Edad" };
+            string[] columns = { "CliID", "TipoID", "Sexo", "Nombre", "Color" };
+            string[] columnsN = { "Fecha Nacimiento", "Edad" };
             string query = "UPDATE Paciente ";
             string condition = "SET ";
 
-            foreach (string column in columns) {
+            foreach (string column in columnsN) {
                 string result = GetColumn(column);
                 query += $"{condition} [{column}] = {IsNull(result)}";
                 condition = ", ";
+            }
+            
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
             }
             
             query += " WHERE PacID = " + TextPacID.Text;
@@ -171,19 +181,51 @@ namespace Fronts {
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Paciente";
+            Titulo.Text = "Buscar Paciente";
+            TextPacID.ReadOnly = false;
+            TextNombre.ReadOnly = false;
+            TextEdad.ReadOnly = false;
+            TextColor.ReadOnly = false;
+            DateFN.Enabled = true;
+            BoxSexo.Enabled = true;
+            BoxCliID.Enabled = true;
+            BoxTipoID.Enabled = true;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Paciente";
+            TextPacID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            TextEdad.ReadOnly = false;
+            TextColor.ReadOnly = false;
+            DateFN.Enabled = true;
+            BoxSexo.Enabled = true;
+            BoxCliID.Enabled = true;
+            BoxTipoID.Enabled = true;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Paciente";
+            TextPacID.ReadOnly = true;
+            TextNombre.ReadOnly = true;
+            TextEdad.ReadOnly = true;
+            TextColor.ReadOnly = true;
+            DateFN.Enabled = false;
+            BoxSexo.Enabled = false;
+            BoxCliID.Enabled = false;
+            BoxTipoID.Enabled = false;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Paciente";
+            TextPacID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            TextEdad.ReadOnly = false;
+            TextColor.ReadOnly = false;
+            DateFN.Enabled = true;
+            BoxSexo.Enabled = true;
+            BoxCliID.Enabled = true;
+            BoxTipoID.Enabled = true;
         }
 
         private void TablaPaciente_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -224,48 +266,64 @@ namespace Fronts {
         private void BotonCliente_Click(object sender, EventArgs e) {
             if (OpcionC.Checked) {
                 string query = QueryConsulta();
-                Console.WriteLine(query);
                 TablaPaciente.DataSource = _negocio.GetListado(query);
             }
             
             if (OpcionG.Checked) {
-                LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 try {
+                    LabelCheck(new []{ "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Crear Paciente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionE.Checked) {
-                LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                 try {
+                    LabelCheck(new []{ "PacID", "TipoID", "Sexo", "Nombre", "Color", "CliID" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
+                    MessageBox.Show("Editado Exitosamente", "Editar Paciente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionB.Checked) {
-                LabelCheck(new []{ "PacID" });
                 try {
+                    LabelCheck(new []{ "PacID" });
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaPaciente.DataSource = _negocio.GetListado("SELECT * FROM VW_Paciente");
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Eliminado Exitosamente", "Eliminar Paciente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
         }
         private void DateFN_ValueChanged_1(object sender, EventArgs e) {
             DateFN.Format = DateTimePickerFormat.Long;
+        }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextPacID.Text = "";
+            TextNombre.Clear();
+            TextEdad.Text = "";
+            TextColor.Clear();
+            DateFN.Format = DateTimePickerFormat.Custom;
+            DateFN.CustomFormat = " ";
+            BoxSexo.Text = "Selecciona";
+            BoxCliID.Text = "Selecciona";
+            BoxTipoID.Text = "Selecciona";
         }
     }
 }

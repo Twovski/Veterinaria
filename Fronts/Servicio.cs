@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Negocio;
@@ -35,8 +36,10 @@ namespace Fronts {
 
             foreach (string column in columns) {
                 string result = GetColumn(column);
-                query += $"{condition} [{column}] = {IsNull(result)}";
-                condition = ", ";
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
             }
             
             query += " WHERE ServID = " + TextServID.Text;
@@ -101,19 +104,27 @@ namespace Fronts {
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Servicio";
+            Titulo.Text = "Buscar Servicio";
+            TextNombre.ReadOnly = false;
+            TextServID.ReadOnly = false;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Servicio";
+            TextNombre.ReadOnly = false;
+            TextServID.ReadOnly = true;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Servicio";
+            TextNombre.ReadOnly = true;
+            TextServID.ReadOnly = true;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Servicio";
+            TextNombre.ReadOnly = false;
+            TextServID.ReadOnly = true;
         }
 
         private void TablaServicio_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -134,39 +145,49 @@ namespace Fronts {
             
             if (OpcionG.Checked) {
                 try {
+                    LabelCheck(new []{ "Nombre" });
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaServicio.DataSource = _negocio.GetListado("SELECT * FROM VW_Servicio");
-                    LabelCheck(new []{ "Nombre" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Guardar Servicio" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) { 
-                    LabelCheck(new []{ "Nombre" });
+                catch (SqlException exception) { 
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionE.Checked) {
                 try {
+                    LabelCheck(new []{ "ServID", "Nombre" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaServicio.DataSource = _negocio.GetListado("SELECT * FROM VW_Servicio");
-                    LabelCheck(new []{ "ServID", "Nombre" });
+                    MessageBox.Show("Editar Exitosamente", "Editar Servicio" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "ServID", "Nombre" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionB.Checked) {
                 try {
+                    LabelCheck(new []{ "ServID" });
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaServicio.DataSource = _negocio.GetListado("SELECT * FROM VW_Servicio");
-                    LabelCheck(new []{ "ServID" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Eliminado Exitosamente", "Eliminar Servicio" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "ServID" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
+        }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextServID.Text = "";
+            TextNombre.Text = "";
         }
     }
 }

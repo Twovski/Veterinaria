@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Negocio;
@@ -25,38 +26,42 @@ namespace Fronts {
             
             if (OpcionG.Checked) {
                 try {
+                    LabelCheck(new []{ "Nombre" });
                     string query = QueryGuardar();
                     _negocio.Execute(query);
                     TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
-                    LabelCheck(new []{ "TipoID", "Nombre" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Guardar Tratamiento" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "TipoID", "Nombre" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionE.Checked) {
                 try {
+                    LabelCheck(new []{ "TraID", "TraID", "Nombre" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
-                    LabelCheck(new []{ "TraID", "TraID", "Nombre" });
+                    MessageBox.Show("Editado Exitosamente", "Editar Tratamiento" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    Console.WriteLine(exception);
-                    LabelCheck(new []{ "TraID", "TraID", "Nombre" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionB.Checked) {
                 try {
+                    LabelCheck(new []{ "TraID" });
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaTT.DataSource = _negocio.GetListado("SELECT * FROM VW_Tratamiento");
-                    LabelCheck(new []{ "TraID" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Borrado Exitosamente", "Borrar Tratamiento" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "TraID" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
         }
@@ -82,8 +87,10 @@ namespace Fronts {
 
             foreach (string column in columns) {
                 string result = GetColumn(column);
-                query += $"{condition} [{column}] = {IsNull(result)}";
-                condition = ", ";
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
             }
             
             query += " WHERE TraID = " + TextTraID.Text;
@@ -154,19 +161,31 @@ namespace Fronts {
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Tratamiento";
+            Titulo.Text = "Buscar Tratamiento";
+            TextTraID.ReadOnly = false;
+            TextNombre.ReadOnly = false;
+            BoxTipoID.Enabled = true;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Tratamiento";
+            TextTraID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            BoxTipoID.Enabled = true;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Tratamiento";
+            TextTraID.ReadOnly = true;
+            TextNombre.ReadOnly = true;
+            BoxTipoID.Enabled = true;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Tratamiento";
+            TextTraID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            BoxTipoID.Enabled = false;
         }
         
         private void TablaTT_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -178,6 +197,12 @@ namespace Fronts {
             TextTraID.Text = Column["TraID"].Value.ToString().Trim();
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
             BoxTipoID.Text = Column["Tipo Tratamiento"].Value.ToString().Trim();
+        }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextTraID.Text = "";
+            TextNombre.Text = "";
+            BoxTipoID.Text = "Selecciona";
         }
     }
 }

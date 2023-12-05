@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Negocio;
@@ -21,39 +22,53 @@ namespace Fronts {
             }
             
             if (OpcionG.Checked) {
-                LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
                 try {
+                    LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
                     string query = QueryGuardar();
                     _negocio.Execute(query);
+                    int vetID = _negocio.ScopeIdentity();
+                    _negocio.Execute($"INSERT INTO Autenticacion(VetID) VALUES({vetID})");
                     TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
-                    MessageBox.Show("Guardado Exitosamente");
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Guardado Exitosamente", "Crear Veterinario" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "Nombre", "Apellido Paterno", "Apellido Materno", "RFC", "Correo" });
+                catch (SqlException exception) {
+                    if (exception.Number == 2627) 
+                        MessageBox.Show("No se pueden repetir los datos de estos campos(RFC, Correo)", 
+                            "Advertencia" , 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
+                    else
+                        Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
+                    
+                    Console.WriteLine(exception);
                 }
             }
             
             if (OpcionE.Checked) {
                 try {
+                    LabelCheck(new []{ "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
                     TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
-                    LabelCheck(new []{ "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" });
+                    MessageBox.Show("Editado Exitosamente", "Editar Veterinario" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "VetID", "Apellido Paterno", "Apellido Materno", "Nombre", "RFC", "Correo" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
             if (OpcionB.Checked) {
                 try {
+                    LabelCheck(new []{ "VetID" });
                     string query = QueryBaja();
                     _negocio.Execute(query);
                     TablaVeterinario.DataSource = _negocio.GetListado("SELECT * FROM VW_Veterinario");
-                    LabelCheck(new []{ "VetID" });
+                    BotonLimpiar.PerformClick();
+                    MessageBox.Show("Eliminado Exitosamente", "Eliminar Veterinario" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    LabelCheck(new []{ "VetID" });
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
         }
@@ -79,12 +94,13 @@ namespace Fronts {
 
             foreach (string column in columns) {
                 string result = GetColumn(column);
-                query += $"{condition} [{column}] = {IsNull(result)}";
-                condition = ", ";
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
             }
             
             query += " WHERE VetID = " + TextVetID.Text;
-            
             return query;
         }
         
@@ -162,22 +178,45 @@ namespace Fronts {
         }
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
-            Titulo.Text = "Consultar Veterinario";
+            Titulo.Text = "Buscar Veterinario";
+            TextVetID.ReadOnly = false;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextRFC.ReadOnly = false;
         }
 
         private void OpcionG_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Crear Veterinario";
+            TextVetID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextRFC.ReadOnly = false;
         }
 
         private void OpcionB_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Eliminar Veterinario";
+            TextVetID.ReadOnly = true;
+            TextNombre.ReadOnly = true;
+            TextAP.ReadOnly = true;
+            TextAM.ReadOnly = true;
+            TextCorreo.ReadOnly = true;
+            TextRFC.ReadOnly = true;
         }
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Veterinario";
+            TextVetID.ReadOnly = true;
+            TextNombre.ReadOnly = false;
+            TextAP.ReadOnly = false;
+            TextAM.ReadOnly = false;
+            TextCorreo.ReadOnly = false;
+            TextRFC.ReadOnly = false;
         }
-
-
+        
         private void TablaVeterinario_CellClick(object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex == -1)
                 return;
@@ -190,6 +229,15 @@ namespace Fronts {
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
             TextRFC.Text = Column["RFC"].Value.ToString().Trim();
             TextCorreo.Text = Column["Correo"].Value.ToString().Trim();
+        }
+
+        private void BotonLimpiar_Click(object sender, EventArgs e) {
+            TextVetID.Text = "";
+            TextNombre.Text = "";
+            TextAP.Text = "";
+            TextAM.Text = "";
+            TextCorreo.Text = "";
+            TextRFC.Text = "";
         }
     }
 }

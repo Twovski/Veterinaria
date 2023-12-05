@@ -17,7 +17,7 @@ namespace Datos {
         
         public List<EntidadTratamiento> ListaVacuna() {
             List<EntidadTratamiento> list = new List<EntidadTratamiento>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tratamiento WHERE TipoID = 1", SQL.Connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Tratamiento WHERE TipoID = 1 AND Status = 1", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadTratamiento() {
@@ -40,7 +40,7 @@ namespace Datos {
         
         public List<EntidadTratamiento> ListaDesparasitante() {
             List<EntidadTratamiento> list = new List<EntidadTratamiento>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Tratamiento WHERE TipoID = 2", SQL.Connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Tratamiento WHERE TipoID = 2 AND Status = 2", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
 
             list.Add(new EntidadTratamiento() {

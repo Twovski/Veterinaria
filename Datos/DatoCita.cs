@@ -17,8 +17,11 @@ namespace Datos {
             return table;
         }
         
-        public List<EntidadPaciente> ListaPaciente(EntidadPaciente paciente) {
+        public List<EntidadPaciente> ListaPaciente() {
             List<EntidadPaciente> list = new List<EntidadPaciente>();
+            SqlCommand command = new SqlCommand("SELECT * FROM Paciente WHERE Status = 1", SQL.Connection);
+            SqlDataReader reader = command.ExecuteReader();
+            
             list.Add(new EntidadPaciente() {
                 PacID = -1,
                 Nombre = "Selecciona",
@@ -30,18 +33,6 @@ namespace Datos {
                 TipoID = -1,
                 CliID =-1
             });
-            
-            string query;
-            if (paciente == null) 
-                query = "SELECT * FROM Paciente WHERE Status = 1";
-            else {
-                list.Add(paciente);
-                query = $"SELECT * FROM Paciente WHERE PacID != {paciente.PacID} AND Status = 1";
-            }
-            
-            SqlCommand command = new SqlCommand(query, SQL.Connection);
-            SqlDataReader reader = command.ExecuteReader();
-            
             while (reader.Read()) 
                 list.Add(new EntidadPaciente() {
                     PacID = reader.GetInt32(0),
@@ -90,7 +81,7 @@ namespace Datos {
         
         public List<EntidadServicio> ListaServicio() {
             List<EntidadServicio> list = new List<EntidadServicio>();
-            SqlCommand command = new SqlCommand("SELECT * FROM Servicio", SQL.Connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Servicio WHERE Status = 1", SQL.Connection);
             SqlDataReader reader = command.ExecuteReader();
             
             list.Add(new EntidadServicio() {

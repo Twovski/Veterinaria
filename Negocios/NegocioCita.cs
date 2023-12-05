@@ -15,8 +15,8 @@ namespace Negocio {
             return _dato.ListaVeterinario(veterinario);
         }
         
-        public List<EntidadPaciente> ListaPaciente(EntidadPaciente paciente) {
-            return _dato.ListaPaciente(paciente);
+        public List<EntidadPaciente> ListaPaciente() {
+            return _dato.ListaPaciente();
         }
 
         public List<EntidadServicio> ListaServicio() {

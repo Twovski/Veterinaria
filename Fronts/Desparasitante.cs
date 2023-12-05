@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Negocio;
@@ -70,7 +71,7 @@ namespace Fronts {
                 case "CitaID":
                     return TextCita.Text;
                 case "Cantidad":
-                    return TextCantidad.Text;
+                    return TextCantidad.Value + "";
                 case "Fecha Proxima":
                     if (string.IsNullOrWhiteSpace(DateFP.Text))
                         return "";
@@ -131,21 +132,30 @@ namespace Fronts {
         private void BotonCliente_Click(object sender, EventArgs e) {
             if (OpcionC.Checked) {
                 string query = QueryConsulta();
-                Console.WriteLine(query);
                 TablaVacunas.DataSource = _negocioCitaDetalle.GetListado(query);
             }
             
             if (OpcionG.Checked) {
                 try {
-                    LabelCheck(new []{ "TraID", "CitaID", "Fecha Proxima", "Cantidad" });
+                    LabelCheck(new []{ "TraID", "CitaID", "Cantidad" });
                     string query = QueryGuardar();
-                    Console.WriteLine(query);
                     _negocioCitaDetalle.Execute(query);
                     TablaVacunas.DataSource = _negocioCitaDetalle.GetListado("SELECT * FROM VW_Desparasitante");
                     BotonLimpiar.PerformClick();
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    if (exception.Number == 2627) 
+                        MessageBox.Show("No se pueden repetir el mismo tratamiento en la cita", 
+                            "Advertencia" , 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
+                    else if (exception.Number == 547) 
+                        MessageBox.Show("Eliga correctamente el ID de la cita", 
+                            "Advertencia" , 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
+                    else
+                        Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
         }
@@ -158,12 +168,11 @@ namespace Fronts {
             TablaCitas.CurrentRow.Selected = true;
             DataGridViewCellCollection Column = TablaCitas.Rows[e.RowIndex].Cells;
             TextCita.Text = Column["CitaID"].Value.ToString().Trim();
-
         }
 
         private void BotonLimpiar_Click(object sender, EventArgs e) {
             TextCita.Text = "";
-            TextCantidad.Value = 0;
+            TextCantidad.Value = 1;
             BoxTraID.Text = "Selecciona";
             DateFP.Format = DateTimePickerFormat.Custom;
             DateFP.CustomFormat = " ";

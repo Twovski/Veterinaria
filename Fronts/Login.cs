@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Entidades;
@@ -8,22 +9,53 @@ namespace Fronts {
     public partial class Login : Form {
         private NegocioVeterinario _negocio = new NegocioVeterinario();
         public EntidadVeterinario EVeterinario;
-        
-        public Login() {
+        public bool Editar;
+        public Login(EntidadVeterinario veterinario, bool editar) {
             InitializeComponent();
             BoxVetID.DataSource = _negocio.ListaVeterinario();
             BoxVetID.DisplayMember = "Nombre";
             BoxVetID.ValueMember = "VetID";
+            Editar = editar;
+            EVeterinario = veterinario;
+            if (editar) {
+                LabelContraseña.Text = "Cambiar contraseña";
+                BoxVetID.Text = EVeterinario.Nombre;
+                BoxVetID.Enabled = false;
+            }
+                
+            
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
+            string query;
+            if (Editar) {
+                try {
+                    LabelCheck(new []{"Contraseña"});
+                    query = QueryEditar();
+                    Console.WriteLine(query);
+                    _negocio.Execute(query);
+                    MessageBox.Show("Contraseña cambiada", "Cambiar Contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                catch (SqlException exception) {
+                    MessageBox.Show("Es necesario que ingreses un texto de esta longitud (1 - 50)", "Cambiar Contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return;
+            }
+            
             LabelCheck(new []{ "VetID", "Contraseña" });
-            string query = QueryConsulta();
+            query = QueryGuardar();
             EVeterinario = _negocio.Login(query);
             if (EVeterinario != null) 
                 Close();
             else 
-                MessageBox.Show("Contraseña incorrecta", "Login" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Contraseña incorrecta", "Login" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
+        }
+        
+        private string IsNull(string text) {
+            return string.IsNullOrWhiteSpace(text) ? "null" : "'" + text + "'";
         }
         
         private void LabelCheck(string[] columns) {
@@ -35,10 +67,27 @@ namespace Fronts {
                     GetLabel(column).ForeColor = Color.Black;
             }
         }
+
+        private string QueryEditar() {
+            string[] columns = { "Contraseña" };    
+            string query = "UPDATE Autenticacion ";
+            string condition = "SET ";
+
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
+            }
+            
+            query += " WHERE VetID = " + GetColumn("VetID");
+            return query;
+        }
         
-        private string QueryConsulta() {
+        private string QueryGuardar() {
             string[] columns = { "VetID", "Contraseña" };
-            string query = $"SELECT * FROM Veterinario";
+            string query = $"SELECT * FROM VW_Login";
             string condition = " WHERE";
 
             foreach (string column in columns) {

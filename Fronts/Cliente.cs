@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using Negocio;
@@ -32,8 +33,14 @@ namespace Fronts {
                     BotonLimpiar.PerformClick();
                     MessageBox.Show("Guardado Exitosamente", "Crear Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    if (exception.Number == 2627) 
+                        MessageBox.Show("No se pueden repetir los datos de estos campos(IFE, Correo, Telefono, Celular)", 
+                            "Advertencia" , 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
+                    else
+                        Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
@@ -42,11 +49,17 @@ namespace Fronts {
                     LabelCheck(new []{ "CliID", "Nombre", "IFE", "Apellido Paterno", "Apellido Materno", "Direccion", "VetID" });
                     string query = QueryEditar();
                     _negocio.Execute(query);
-                    MessageBox.Show("Editado Exitosamente", "Editar Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
+                    MessageBox.Show("Editado Exitosamente", "Editar Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    if (exception.Number == 2627) 
+                        MessageBox.Show("No se pueden repetir los datos de estos campos(IFE, Correo, Telefono, Celular)", 
+                            "Advertencia" , 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Warning);
+                    else
+                        Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
             
@@ -54,14 +67,14 @@ namespace Fronts {
                 try {
                     LabelCheck(new []{ "CliID" });
                     string query = QueryBaja();
-                    _negocio.Execute(query);
+                    int row = _negocio.Execute(query);
+                    Console.WriteLine(row);
                     TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
                     BotonLimpiar.PerformClick();
                     MessageBox.Show("Eliminado Exitosamente", "Eliminar Cliente" , MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
-                catch (Exception exception) {
-                    
+                catch (SqlException exception) {
+                    Console.WriteLine("Error SQL Server {0}: {1}", exception.Number, exception.Message);
                 }
             }
         }
@@ -81,14 +94,23 @@ namespace Fronts {
         }
         
         private string QueryEditar() {
-            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "Correo", "Celular", "Telefono", "VetID" };
+            string[] columns = {  "Nombre", "Apellido Paterno", "Apellido Materno", "Direccion", "IFE", "VetID" };
+            string[] columnsN = { "Correo", "Celular", "Telefono" };
             string query = "UPDATE Cliente ";
             string condition = "SET ";
 
-            foreach (string column in columns) {
+            foreach (string column in columnsN) {
                 string result = GetColumn(column);
                 query += $"{condition} [{column}] = {IsNull(result)}";
                 condition = ", ";
+            }
+            
+            foreach (string column in columns) {
+                string result = GetColumn(column);
+                if (!string.IsNullOrWhiteSpace(result)) {
+                    query += $"{condition} [{column}] = {IsNull(result)}";
+                    condition = ", ";
+                }
             }
             
             query += " WHERE CliID = " + TextCliID.Text;
@@ -181,7 +203,7 @@ namespace Fronts {
         
         private void OpcionC_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Buscar Clientes";
-            TextCliID.ReadOnly = true;
+            TextCliID.ReadOnly = false;
             BoxVetID.Enabled = true;
             TextNombre.ReadOnly = false;
             TextAP.ReadOnly = false;
@@ -223,7 +245,7 @@ namespace Fronts {
 
         private void OpcionE_CheckedChanged(object sender, EventArgs e) {
             Titulo.Text = "Editar Clientes";
-            TextCliID.ReadOnly = false;
+            TextCliID.ReadOnly = true;
             BoxVetID.Enabled = true;
             TextNombre.ReadOnly = false;
             TextAP.ReadOnly = false;

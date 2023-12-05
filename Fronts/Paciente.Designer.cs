@@ -57,6 +57,7 @@ namespace Fronts {
             this.LabelFN = new System.Windows.Forms.Label();
             this.DateFN = new System.Windows.Forms.DateTimePicker();
             this.TextEdad = new System.Windows.Forms.NumericUpDown();
+            this.BotonLimpiar = new System.Windows.Forms.Button();
             this.TablaPaciente = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -252,6 +253,7 @@ namespace Fronts {
             this.tableLayoutPanel3.Controls.Add(this.LabelFN, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.DateFN, 0, 9);
             this.tableLayoutPanel3.Controls.Add(this.TextEdad, 3, 9);
+            this.tableLayoutPanel3.Controls.Add(this.BotonLimpiar, 2, 10);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 79);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 12;
@@ -429,13 +431,13 @@ namespace Fronts {
             // BotonCliente
             // 
             this.BotonCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 4);
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonCliente, 2);
             this.BotonCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BotonCliente.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonCliente.Location = new System.Drawing.Point(3, 253);
             this.BotonCliente.Name = "BotonCliente";
             this.tableLayoutPanel3.SetRowSpan(this.BotonCliente, 2);
-            this.BotonCliente.Size = new System.Drawing.Size(382, 46);
+            this.BotonCliente.Size = new System.Drawing.Size(188, 46);
             this.BotonCliente.TabIndex = 24;
             this.BotonCliente.Text = "Ok";
             this.BotonCliente.UseVisualStyleBackColor = true;
@@ -489,6 +491,21 @@ namespace Fronts {
             this.TextEdad.TabIndex = 42;
             this.TextEdad.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // BotonLimpiar
+            // 
+            this.BotonLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BotonLimpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonLimpiar.Location = new System.Drawing.Point(197, 253);
+            this.BotonLimpiar.Name = "BotonLimpiar";
+            this.tableLayoutPanel3.SetRowSpan(this.BotonLimpiar, 2);
+            this.BotonLimpiar.Size = new System.Drawing.Size(188, 46);
+            this.BotonLimpiar.TabIndex = 46;
+            this.BotonLimpiar.Text = "Limpiar";
+            this.BotonLimpiar.UseVisualStyleBackColor = true;
+            this.BotonLimpiar.Click += new System.EventHandler(this.BotonLimpiar_Click);
+            // 
             // TablaPaciente
             // 
             this.TablaPaciente.AllowUserToAddRows = false;
@@ -530,6 +547,8 @@ namespace Fronts {
             ((System.ComponentModel.ISupportInitialize)(this.TablaPaciente)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button BotonLimpiar;
 
         private System.Windows.Forms.Label LabelCliente;
 
