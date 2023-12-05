@@ -11,7 +11,7 @@ namespace Fronts {
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {
-            new Cliente().ShowDialog();        
+            new Cliente().ShowDialog();      
         }
 
         private void BotonPaciente_Click(object sender, EventArgs e) {
@@ -28,6 +28,7 @@ namespace Fronts {
 
         private void BotonExpediente_Click(object sender, EventArgs e) {
             new Expediente().ShowDialog();
+            notifyIcon1.ShowBalloonTip(500);
         }
 
         private void OpcionTratamiento_Click(object sender, EventArgs e) {
