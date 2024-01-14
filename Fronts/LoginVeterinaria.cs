@@ -5,25 +5,29 @@ using Negocio;
 
 namespace Fronts {
     public partial class LoginVeterinaria : Form {
-        private NegocioCliente _negocio = new NegocioCliente();
-        public EntidadVeterinaria Veterinaria;
+        private NegocioLoginVeterinaria _negocioLoginVeterinaria = new NegocioLoginVeterinaria();
+        private NegocioCliente _negocioCliente = new NegocioCliente();
         
         public LoginVeterinaria() {
             InitializeComponent();
-            BoxVeterinaria.DataSource = _negocio.ListaVeterinaria();
+            _negocioLoginVeterinaria.StartConexion();
+            BoxVeterinaria.DataSource = _negocioCliente.ListaVeterinaria();
             BoxVeterinaria.DisplayMember = "Nombre";
             BoxVeterinaria.ValueMember = "VetID";
         }
 
 
         private void Boton_Click(object sender, EventArgs e) {
-            Veterinaria = (EntidadVeterinaria) BoxVeterinaria.SelectedItem;
-            if (Veterinaria.VetID != -1) {
-                Close();
-                return;   
+            Menu menu = new Menu();
+            EntidadVeterinaria veterinaria = (EntidadVeterinaria) BoxVeterinaria.SelectedItem;
+            if (veterinaria.VetID == -1) {
+                MessageBox.Show("Porfavor selecciona una veterinaria", "Seleccion Veterinaria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            
-            MessageBox.Show("Porfavor selecciona una veterinaria", "Seleccion Veterinaria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            menu.veterinaria = veterinaria;
+            this.Hide();
+            menu.ShowDialog();
+            this.Close();
         }
     }
 }

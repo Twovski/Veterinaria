@@ -197,6 +197,7 @@
       <Content Include="Resources\Logo_Veterinario.png" />
       <Content Include="Resources\Menu.png" />
       <Content Include="Resources\Opcion.png" />
+      <Content Include="Resources\VetReza.sql" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>

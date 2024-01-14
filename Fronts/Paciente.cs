@@ -28,15 +28,15 @@ namespace Fronts {
 
             List<EntidadSexo> list = new List<EntidadSexo>();
             list.Add(new EntidadSexo() {
-                SexoID = -1,
+                SexoID = ' ',
                 Nombre = "Selecciona"
             });
             list.Add(new EntidadSexo() {
-                SexoID = 1,
+                SexoID = 'M',
                 Nombre = "Masculino"
             });
             list.Add(new EntidadSexo() {
-                SexoID = 0,
+                SexoID = 'F',
                 Nombre = "Femenino"
             });
 
@@ -142,8 +142,8 @@ namespace Fronts {
                     id = (int) BoxTipoID.SelectedValue;
                     return id == -1 ? "" : Convert.ToString(id);
                 case "Sexo":
-                    id = (int) BoxSexo.SelectedValue;
-                    return id == -1 ? "" : Convert.ToString(id);
+                    char value = (char) BoxSexo.SelectedValue;
+                    return value == ' ' ? "" : Convert.ToString(value);
                 case "Color":
                     return TextColor.Text;
                 case "Fecha Nacimiento":
@@ -245,7 +245,8 @@ namespace Fronts {
             TextPacID.Text = pacID;
             TextNombre.Text = Column["Nombre"].Value.ToString().Trim();
             BoxTipoID.Text = Column["Tipo Animal"].Value.ToString().Trim();
-            BoxSexo.Text = GetSexo((bool) Column["Sexo"].Value);
+            
+            BoxSexo.Text = GetSexo(Column["Sexo"].Value.ToString().Trim());
             TextColor.Text = Column["Color"].Value.ToString().Trim();
             BoxCliID.Text = Column["Cliente"].Value.ToString().Trim();
             if (!string.IsNullOrWhiteSpace(fecha)) {
@@ -259,8 +260,8 @@ namespace Fronts {
             TextEdad.Text = Column["Edad"].Value.ToString().Trim();
         }
 
-        private string GetSexo(bool value) {
-            return value ? "Masculino" : "Femenino";
+        private string GetSexo(string value) {
+            return value.Equals("M")  ? "Masculino" : "Femenino";
         }
 
         private void BotonCliente_Click(object sender, EventArgs e) {

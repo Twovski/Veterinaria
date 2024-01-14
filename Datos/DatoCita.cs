@@ -25,7 +25,7 @@ namespace Datos {
             list.Add(new EntidadPaciente() {
                 PacID = -1,
                 Nombre = "Selecciona",
-                Sexo = false,
+                Sexo = ' ',
                 Color = null,
                 Status = false,
                 FechaNacimiento = null,
@@ -37,7 +37,7 @@ namespace Datos {
                 list.Add(new EntidadPaciente() {
                     PacID = reader.GetInt32(0),
                     Nombre = reader.GetString(1),
-                    Sexo = reader.GetBoolean(2),
+                    Sexo = Convert.ToChar(reader.GetString(2)),
                     Color = reader.GetString(3),
                     Status = reader.GetBoolean(4),
                     FechaNacimiento = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5),

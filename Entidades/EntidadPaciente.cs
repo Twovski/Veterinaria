@@ -4,7 +4,7 @@ namespace Entidades {
     public class EntidadPaciente {
         public int PacID { get; set; }
         public string Nombre { get; set; }
-        public bool Sexo { get; set; }
+        public char Sexo { get; set; }
         public string Color { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public bool Status { get; set; }

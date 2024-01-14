@@ -9,14 +9,14 @@ namespace Fronts {
      public partial class Cliente : Form {
         private NegocioCliente _negocio = new NegocioCliente();
         
-        public Cliente(EntidadVeterinaria veterinaria) {
+        public Cliente(string text) {
             InitializeComponent();
             TablaCliente.DataSource = _negocio.GetListado("SELECT * FROM VW_Cliente");
             TextCliID.Controls[0].Visible = false;
             BoxVetID.DataSource = _negocio.ListaVeterinaria();
             BoxVetID.DisplayMember = "Nombre";
             BoxVetID.ValueMember = "VetID";
-            BoxVetID.Text = veterinaria.Nombre;
+            BoxVetID.Text = text;
             TextCliID.Text = "";
         }
 

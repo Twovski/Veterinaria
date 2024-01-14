@@ -9,16 +9,14 @@ using Timer = System.Timers.Timer;
 namespace Fronts {
     public partial class Menu : Form {
         private NegocioMenu _negocioMenu = new NegocioMenu();
-        private EntidadVeterinaria _veterinaria;
         private LoginVeterinaria LoginVeterinaria;
+        public EntidadVeterinaria veterinaria { get; set; }
+        
         public Menu() {
-            _negocioMenu.StartConexion();
             InitializeComponent();
             Timer timer = new Timer(60000);
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
-            LoginVeterinaria = new LoginVeterinaria();
-            LoginVeterinaria.ShowDialog();
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e) {
@@ -31,7 +29,7 @@ namespace Fronts {
         }
         
         private void BotonCliente_Click(object sender, EventArgs e) {
-            new Cliente(LoginVeterinaria.Veterinaria).ShowDialog();      
+            new Cliente(veterinaria.Nombre).ShowDialog();      
         }
 
         private void BotonPaciente_Click(object sender, EventArgs e) {
